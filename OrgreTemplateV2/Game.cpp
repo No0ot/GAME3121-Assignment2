@@ -7,25 +7,16 @@
 class PhysicsFrameListener : public Ogre::FrameListener
 {
 private:
-    std::vector<PhysicsObject*> physicsObjects;
     Game* gameInstance;
 public:
 
-    PhysicsFrameListener(std::vector<PhysicsObject*> physicsobjects, Game* gameinstanceref )
+    PhysicsFrameListener(Game* gameinstanceref )
     {
-        for (auto objects : physicsobjects)
-        {
-            physicsObjects.push_back(objects);
-        }
         gameInstance = gameinstanceref;
     }
 
     bool frameStarted(const Ogre::FrameEvent& evt)
     {
-        for (auto objects : physicsObjects)
-        {
-            objects->update(evt);
-        }
         gameInstance->UpdateUI(evt);
         return true;
     }
@@ -69,15 +60,6 @@ bool Game::keyPressed(const KeyboardEvent& evt)
     case SDLK_ESCAPE:
         getRoot()->queueEndRendering();
         break;
-    case 'a':
-        paddleObject->moveLeft = true;
-        break;
-    case 'd':
-        paddleObject->moveRight = true;
-        break;
-    case 'g':
-        ballObject->BeginPlay();
-        break;
     default:
         break;
     }
@@ -90,12 +72,6 @@ bool Game::keyReleased(const KeyboardEvent& evt)
 {
     switch (evt.keysym.sym)
     {
-    case 'a':
-        paddleObject->moveLeft = false;
-        break;
-    case 'd':
-        paddleObject->moveRight = false;
-        break;
     default:
         break;
     }
@@ -130,7 +106,7 @@ void Game::CreateCamera()
 ///
 void Game::CreateFrameListener()
 {
-    Ogre::FrameListener* FrameListener = new PhysicsFrameListener(physicsObjects, this);
+    Ogre::FrameListener* FrameListener = new PhysicsFrameListener(this);
     root->addFrameListener(FrameListener);
 }
 
@@ -192,28 +168,7 @@ void Game::CreateLights()
 ///
 void Game::CreatePhysicsObjects()
 {
-    Ogre::ManualObject* cubeMesh = MyMesh::createCubeMesh("Cube", "FlatVertexColour");
-    paddleNode = scnMgr->getRootSceneNode()->createChildSceneNode("paddleNode");
-    paddleNode->attachObject(cubeMesh);
-    paddleNode->setScale(10.0, 2.0, 2.0);
-    paddleNode->setPosition(0, -15, 250);
 
-    paddleObject = new Paddle();
-    paddleObject->setNode(paddleNode);
-    paddleObject->SetMesh(cubeMesh);
-
-    Ogre::ManualObject* sphereMesh = MyMesh::createSphereMesh("Sphere", "FlatVertexColour", 1.0f);
-    ballNode = scnMgr->getRootSceneNode()->createChildSceneNode("ballNode");
-    ballNode->attachObject(sphereMesh);
-    ballNode->setScale(1.0, 1.0, 1.0);
-    ballNode->setPosition(0, 15, 250);
-
-    ballObject = new Ball(paddleObject);
-    ballObject->setNode(ballNode);
-    ballObject->SetMesh(sphereMesh);
-
-    physicsObjects.push_back(paddleObject);
-    physicsObjects.push_back(ballObject);
 }
 /// Creates the UI:
 /// Creates the traymanager and the different labels present within the scene
@@ -248,10 +203,6 @@ void Game::CreateUI()
 /// 
 void Game::UpdateUI(const Ogre::FrameEvent& evt)
 {
-    livesnum = Ogre::StringConverter::toString(ballObject->GetLives());
-    mLives->setCaption(livesnum);
-    scorenum = Ogre::StringConverter::toString(ballObject->GetScore());
-    mScore->setCaption(scorenum);
 
     Tpunum = Ogre::StringConverter::toString(evt.timeSinceLastFrame);
     mTpu->setCaption(Tpunum);

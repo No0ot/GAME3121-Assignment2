@@ -4,8 +4,6 @@
 #include "OgreInput.h"
 #include "OgreRTShaderSystem.h"
 #include "OgreTrays.h"
-#include "Ball.h"
-#include "Paddle.h"
 #include <iostream>
 
 using namespace Ogre;
@@ -20,13 +18,6 @@ class Game
 private:
     SceneManager* scnMgr;
     Root* root;
-
-    std::vector<PhysicsObject*> physicsObjects;
-
-    Paddle* paddleObject;
-    Ogre::SceneNode* paddleNode;
-    Ball* ballObject;
-    Ogre::SceneNode* ballNode;
 
     TrayManager* mTrayMgr;
     TrayListener myTrayListener;
