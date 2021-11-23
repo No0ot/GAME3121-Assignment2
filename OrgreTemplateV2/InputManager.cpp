@@ -2,13 +2,8 @@
 
 InputManager::InputManager()
 {
-    mKeyDownSubjects.push_back(new InputSubject(SDLK_SPACE, EventType::KEYDOWN));
-
-
-    mKeyDownSubjects.push_back(new InputSubject(SDLK_DOWN, EventType::KEYDOWN));
-
-
-    mKeyUpSubjects.push_back(new InputSubject(SDLK_SPACE, EventType::KEYUP));
+    PopulateKeyDownList();
+    PopulateKeyUpList();
 }
 
 InputManager::~InputManager()
@@ -41,6 +36,33 @@ bool InputManager::keyReleased(const KeyboardEvent& evt)
         ++iterator;
     }
     return true;
+}
+
+void InputManager::PopulateKeyDownList()
+{
+    mKeyDownSubjects.push_back(new InputSubject(SDLK_SPACE, EventType::KEYDOWN));
+    mKeyDownSubjects.push_back(new InputSubject(SDLK_UP, EventType::KEYDOWN));
+    mKeyDownSubjects.push_back(new InputSubject(SDLK_DOWN, EventType::KEYDOWN));
+    mKeyDownSubjects.push_back(new InputSubject(SDLK_LEFT, EventType::KEYDOWN));
+    mKeyDownSubjects.push_back(new InputSubject(SDLK_RIGHT, EventType::KEYDOWN));
+    mKeyDownSubjects.push_back(new InputSubject('w', EventType::KEYDOWN));
+    mKeyDownSubjects.push_back(new InputSubject('s', EventType::KEYDOWN));
+    mKeyDownSubjects.push_back(new InputSubject('a', EventType::KEYDOWN));
+    mKeyDownSubjects.push_back(new InputSubject('d', EventType::KEYDOWN));
+
+}
+
+void InputManager::PopulateKeyUpList()
+{
+    mKeyUpSubjects.push_back(new InputSubject(SDLK_SPACE, EventType::KEYUP));
+    mKeyUpSubjects.push_back(new InputSubject(SDLK_UP, EventType::KEYUP));
+    mKeyUpSubjects.push_back(new InputSubject(SDLK_DOWN, EventType::KEYUP));
+    mKeyUpSubjects.push_back(new InputSubject(SDLK_LEFT, EventType::KEYUP));
+    mKeyUpSubjects.push_back(new InputSubject(SDLK_RIGHT, EventType::KEYUP));
+    mKeyUpSubjects.push_back(new InputSubject('w', EventType::KEYUP));
+    mKeyUpSubjects.push_back(new InputSubject('s', EventType::KEYUP));
+    mKeyUpSubjects.push_back(new InputSubject('a', EventType::KEYUP));
+    mKeyUpSubjects.push_back(new InputSubject('d', EventType::KEYUP));
 }
 
 InputSubject* InputManager::GetInputSubject(Keycode keycode, EventType evtype)

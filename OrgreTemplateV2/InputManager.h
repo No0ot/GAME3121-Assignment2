@@ -13,14 +13,15 @@ using namespace OgreBites;
 
 class InputManager : public InputListener
 {
-	//KeyboardEvent*
-
 public:
 	InputManager();
 	~InputManager();
 
 	bool keyPressed(const KeyboardEvent& evt);
 	bool keyReleased(const KeyboardEvent& evt);
+
+	void PopulateKeyDownList();
+	void PopulateKeyUpList();
 
 	InputSubject* GetInputSubject(Keycode, EventType);
 

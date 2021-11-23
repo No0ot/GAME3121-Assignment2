@@ -9,6 +9,8 @@ ChildObject::ChildObject(Game* gameInstance) : GameObject(gameInstance)
 	AttachToSubject(*temp);
 	temp = mGameReference->mInputManager->GetInputSubject(SDLK_DOWN, EventType::KEYDOWN);
 	AttachToSubject(*temp);
+	temp = mGameReference->mInputManager->GetInputSubject('a', EventType::KEYDOWN);
+	AttachToSubject(*temp);
 }
 
 ChildObject::~ChildObject()
@@ -23,4 +25,6 @@ void ChildObject::ObserverUpdate(Keycode keycode, EventType eventtype)
 		std::cout << "SOMETHING HAPPENS UP" << std::endl;
 	if (keycode == SDLK_DOWN && eventtype == EventType::KEYDOWN)
 		std::cout << "SOMETHING DOWNWNWNWNDWN" << std::endl;
+	if (keycode == 'a' && eventtype == EventType::KEYDOWN)
+		std::cout << "AAAAAAAAAAAAA" << std::endl;
 }
