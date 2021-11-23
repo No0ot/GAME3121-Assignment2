@@ -39,6 +39,7 @@ void Game::setup()
     // do not forget to call the base first
     ApplicationContext::setup();
     mInputManager = new InputManager();
+    gameObject = new ChildObject(this);
     addInputListener(mInputManager);
 
     // get a pointer to the already created root

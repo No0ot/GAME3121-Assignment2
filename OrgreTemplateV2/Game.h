@@ -5,6 +5,8 @@
 #include "OgreRTShaderSystem.h"
 #include "OgreTrays.h"
 #include "InputManager.h"
+#include "ChildObject.h"
+
 #include <iostream>
 
 using namespace Ogre;
@@ -20,7 +22,7 @@ private:
     SceneManager* scnMgr;
     Root* root;
 
-    InputManager* mInputManager;
+    ChildObject* gameObject;
 
     TrayManager* mTrayMgr;
     TrayListener myTrayListener;
@@ -45,6 +47,7 @@ public:
     Game();
     ~Game();
 
+    InputManager* mInputManager;
     /// <summary>
     /// Main Setup Function
     /// </summary>

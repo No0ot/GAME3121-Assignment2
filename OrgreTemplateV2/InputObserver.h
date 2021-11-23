@@ -10,8 +10,8 @@ public:
 
 	void RemoveMeFromTheList();
 	void AttachToSubject(InputSubject& mSubject);
-	void Update();
-	virtual void ObserverUpdate() = 0;
+	void Update(Keycode, EventType);
+	virtual void ObserverUpdate(Keycode,EventType) = 0;
 
 
 private:

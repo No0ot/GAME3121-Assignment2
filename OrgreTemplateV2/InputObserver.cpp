@@ -18,7 +18,7 @@ void InputObserver::AttachToSubject(InputSubject& mSubject)
 	mSubject.Attach(this);
 }
 
-void InputObserver::Update()
+void InputObserver::Update(Keycode keycode, EventType evttype)
 {
-	ObserverUpdate();
+	ObserverUpdate(keycode, evttype);
 }

@@ -5,6 +5,7 @@
 #include "OgreRTShaderSystem.h"
 #include "OgreTrays.h"
 #include <iostream>
+#include <list>
 #include "InputSubject.h"
 
 using namespace Ogre;
@@ -21,7 +22,11 @@ public:
 	bool keyPressed(const KeyboardEvent& evt);
 	bool keyReleased(const KeyboardEvent& evt);
 
-	InputSubject* mSpaceDownSubject;
+	InputSubject* GetInputSubject(Keycode, EventType);
+
 private:
+	std::list<InputSubject*> mKeyDownSubjects;
+	std::list<InputSubject*> mKeyUpSubjects;
+
 };
 
