@@ -28,6 +28,9 @@ Game::Game()
     : ApplicationContext("GAME3121 - TulipChris - Assignment1")
 {
 }
+Game::~Game()
+{
+}
 /// Main setup function
 /// calls the super setup function as well as gets references to the root and SceneManager
 /// 
@@ -35,7 +38,8 @@ void Game::setup()
 {
     // do not forget to call the base first
     ApplicationContext::setup();
-    addInputListener(this);
+    mInputManager = new InputManager();
+    addInputListener(mInputManager);
 
     // get a pointer to the already created root
     root = getRoot();
@@ -52,31 +56,18 @@ void Game::setup()
 /// Input detection function for keydown
 /// Handles input detection for keyboard buttons pressed down
 /// Basic Controls for the game
-bool Game::keyPressed(const KeyboardEvent& evt)
-{
-
-    switch (evt.keysym.sym)
-    {
-    case SDLK_ESCAPE:
-        getRoot()->queueEndRendering();
-        break;
-    default:
-        break;
-    }
-    return true;
-}
-/// Input detection for Keyup
-/// used to smooth movement of the paddle object
-/// 
-bool Game::keyReleased(const KeyboardEvent& evt)
-{
-    switch (evt.keysym.sym)
-    {
-    default:
-        break;
-    }
-    return true;
-}
+//bool Game::keyPressed(const KeyboardEvent& evt)
+//{
+//
+//   
+//}
+///// Input detection for Keyup
+///// used to smooth movement of the paddle object
+///// 
+//bool Game::keyReleased(const KeyboardEvent& evt)
+//{
+//   
+//}
 /// Create Scene Function
 /// Calls the other functions that create the main objects in the game
 ///

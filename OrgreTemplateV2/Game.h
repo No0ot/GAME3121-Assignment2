@@ -4,6 +4,7 @@
 #include "OgreInput.h"
 #include "OgreRTShaderSystem.h"
 #include "OgreTrays.h"
+#include "InputManager.h"
 #include <iostream>
 
 using namespace Ogre;
@@ -13,11 +14,13 @@ using namespace OgreBites;
 /// </summary>
 class Game 
     : public ApplicationContext
-    , public InputListener
+ //   , public InputListener
 {
 private:
     SceneManager* scnMgr;
     Root* root;
+
+    InputManager* mInputManager;
 
     TrayManager* mTrayMgr;
     TrayListener myTrayListener;
@@ -40,7 +43,7 @@ private:
 
 public:
     Game();
-    virtual ~Game() {}
+    ~Game();
 
     /// <summary>
     /// Main Setup Function
