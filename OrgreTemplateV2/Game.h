@@ -5,7 +5,7 @@
 #include "OgreRTShaderSystem.h"
 #include "OgreTrays.h"
 #include "InputManager.h"
-#include "ChildObject.h"
+#include "Player.h"
 
 #include <iostream>
 
@@ -15,15 +15,18 @@ using namespace OgreBites;
 /// Game class used to build the application and set-up the game world
 /// </summary>
 class Game 
-    : public ApplicationContext
- //   , public InputListener
+    : public ApplicationContext,
+      public InputObserver
 {
 private:
     SceneManager* scnMgr;
     Root* root;
+    bool _keepRunning;
 
-    ChildObject* gameObject;
+    std::vector<GameObject*> gameObjects;
 
+    Player* playerObject;
+    Ogre::SceneNode* ballNode;
     TrayManager* mTrayMgr;
     TrayListener myTrayListener;
     Label* mInfoLabel;
@@ -93,5 +96,10 @@ public:
     /// </summary>
     /// <param name="evt"></param>
     void UpdateUI(const Ogre::FrameEvent& evt);
+
+    void ObserverUpdate(Keycode, EventType) override;
+
+    bool keepRunning();
+    void renderOneFrame();
 };
 

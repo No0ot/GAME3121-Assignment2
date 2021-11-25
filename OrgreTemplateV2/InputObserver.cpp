@@ -9,13 +9,9 @@ InputObserver::~InputObserver()
 {
 }
 
-void InputObserver::RemoveMeFromTheList()
+void InputObserver::AttachToSubject(InputSubject& subject)
 {
-}
-
-void InputObserver::AttachToSubject(InputSubject& mSubject)
-{
-	mSubject.Attach(this);
+	subject.Attach(this);
 }
 
 void InputObserver::Update(Keycode keycode, EventType evttype)

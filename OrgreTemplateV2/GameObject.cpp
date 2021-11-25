@@ -1,23 +1,28 @@
 #include "GameObject.h"
-//#include "Game.h"
+#include "Game.h"
 
-GameObject::GameObject(Game* ref) : mGameReference(ref)
+GameObject::GameObject(Game* ref, SceneManager* scnmngr, std::string name) : mGameReference(ref)
 {
-
+	node = scnmngr->getRootSceneNode()->createChildSceneNode(name);
 }
 
 GameObject::~GameObject()
 {
 }
 
-//Example of how the Observer Input works
-//void GameObject::ObserverUpdate(Keycode keycode, EventType eventtype)
-//{
-//	if(keycode == SDLK_SPACE && eventtype == EventType::KEYDOWN)
-//		std::cout << "SOMETHING HAPPENS DOWN" << std::endl;
-//	if (keycode == SDLK_SPACE && eventtype == EventType::KEYUP)
-//		std::cout << "SOMETHING HAPPENS UP" << std::endl;
-//	if (keycode == SDLK_DOWN && eventtype == EventType::KEYDOWN)
-//		std::cout << "SOMETHING DOWNWNWNWNDWN" << std::endl;
-//
-//}
+Ogre::SceneNode* GameObject::getNode()
+{
+	return node;
+}
+/// <summary>
+/// Sets the reference to a SceneNode
+/// </summary>
+/// <param name="newnode"> Reference to the SceneNode to be attached</param>
+void GameObject::setNode(Ogre::SceneNode* newnode)
+{
+	node = newnode;
+}
+/// <summary>
+/// Returns a reference to the attached Manual object(mesh)
+/// </summary>
+/// <returns> Returns mesh member </returns>

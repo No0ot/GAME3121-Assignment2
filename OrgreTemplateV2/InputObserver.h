@@ -8,13 +8,11 @@ public:
 	InputObserver();
 	~InputObserver();
 
-	void RemoveMeFromTheList();
-	void AttachToSubject(InputSubject& mSubject);
+	void AttachToSubject(InputSubject& subject);
 	void Update(Keycode, EventType);
 	virtual void ObserverUpdate(Keycode,EventType) = 0;
 
 
 private:
-	//std::list<InputSubject&> mSubject;
 };
 

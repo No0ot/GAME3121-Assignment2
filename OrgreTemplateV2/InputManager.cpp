@@ -40,6 +40,7 @@ bool InputManager::keyReleased(const KeyboardEvent& evt)
 
 void InputManager::PopulateKeyDownList()
 {
+    mKeyDownSubjects.push_back(new InputSubject(SDLK_ESCAPE, EventType::KEYDOWN));
     mKeyDownSubjects.push_back(new InputSubject(SDLK_SPACE, EventType::KEYDOWN));
     mKeyDownSubjects.push_back(new InputSubject(SDLK_UP, EventType::KEYDOWN));
     mKeyDownSubjects.push_back(new InputSubject(SDLK_DOWN, EventType::KEYDOWN));

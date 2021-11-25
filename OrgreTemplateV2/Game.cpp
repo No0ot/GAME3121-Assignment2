@@ -7,16 +7,37 @@
 class PhysicsFrameListener : public Ogre::FrameListener
 {
 private:
+    std::vector<GameObject*> gameObjects;
     Game* gameInstance;
 public:
 
-    PhysicsFrameListener(Game* gameinstanceref )
+    PhysicsFrameListener(std::vector<GameObject*> gameobjects, Game* gameinstanceref )
     {
+        for (auto objects : gameobjects)
+        {
+            gameObjects.push_back(objects);
+        }
         gameInstance = gameinstanceref;
     }
 
     bool frameStarted(const Ogre::FrameEvent& evt)
     {
+        
+        return true;
+    }
+
+    bool frameEnded(const Ogre::FrameEvent& evt)
+    {
+        
+        return true;
+    }
+
+    bool frameRenderingQueued(const Ogre::FrameEvent& evt)
+    {
+        for (auto objects : gameObjects)
+        {
+            objects->Update(evt);
+        }
         gameInstance->UpdateUI(evt);
         return true;
     }
@@ -25,8 +46,9 @@ public:
 /// 
 /// 
 Game::Game()
-    : ApplicationContext("GAME3121 - TulipChris - Assignment1")
+    : ApplicationContext("GAME3121 - Assignment 2")
 {
+    _keepRunning = true;
 }
 Game::~Game()
 {
@@ -39,8 +61,9 @@ void Game::setup()
     // do not forget to call the base first
     ApplicationContext::setup();
     mInputManager = new InputManager();
-    gameObject = new ChildObject(this);
     addInputListener(mInputManager);
+    InputSubject* temp = mInputManager->GetInputSubject(SDLK_ESCAPE, EventType::KEYDOWN);
+    this->AttachToSubject(*temp);
 
     // get a pointer to the already created root
     root = getRoot();
@@ -49,6 +72,9 @@ void Game::setup()
     // register our scene with the RTSS
     RTShader::ShaderGenerator* shadergen = RTShader::ShaderGenerator::getSingletonPtr();
     shadergen->addSceneManager(scnMgr);
+
+    playerObject = new Player(this, this->scnMgr, "Player");
+    gameObjects.push_back(playerObject);
 
     CreateScene();
     CreateCamera();
@@ -89,7 +115,7 @@ void Game::CreateCamera()
     cam->setNearClipDistance(5);
     cam->setAutoAspectRatio(true);
     camNode->attachObject(cam);
-    camNode->setPosition(0, 0, 300);
+    camNode->setPosition(0, 0, 50);
 
     getRenderWindow()->addViewport(cam);
 }
@@ -98,7 +124,7 @@ void Game::CreateCamera()
 ///
 void Game::CreateFrameListener()
 {
-    Ogre::FrameListener* FrameListener = new PhysicsFrameListener(this);
+    Ogre::FrameListener* FrameListener = new PhysicsFrameListener(gameObjects, this);
     root->addFrameListener(FrameListener);
 }
 
@@ -113,7 +139,7 @@ void Game::CreateBackground()
     MeshManager::getSingleton().createPlane(
         "ground", RGN_DEFAULT,
         plane,
-        1500, 1500, 20, 20,
+        100, 100, 20, 20,
         true,
         1, 5, 5,
         Vector3::UNIT_Y);
@@ -201,4 +227,24 @@ void Game::UpdateUI(const Ogre::FrameEvent& evt)
 
     fpsnum = Ogre::StringConverter::toString(1 / evt.timeSinceLastFrame);
     mFps->setCaption(fpsnum);
+}
+
+void Game::ObserverUpdate(Keycode keycode, EventType eventtype)
+{
+    if (keycode == SDLK_ESCAPE && eventtype == EventType::KEYDOWN)
+    {
+        getRoot()->queueEndRendering();
+        _keepRunning = false;
+    }
+        
+}
+
+bool Game::keepRunning()
+{
+    return _keepRunning;
+}
+
+void Game::renderOneFrame()
+{
+    mRoot->renderOneFrame();
 }

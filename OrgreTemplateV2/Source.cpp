@@ -17,7 +17,11 @@ int main(int argc, char** argv)
     {
         Game app;
         app.initApp();
-        app.getRoot()->startRendering();
+        //app.getRoot()->startRendering();
+        while (app.keepRunning())
+        {
+            app.renderOneFrame();
+        }
         app.closeApp();
     }
     catch (const std::exception& e)
