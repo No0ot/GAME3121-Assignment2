@@ -20,7 +20,7 @@ int main(int argc, char** argv)
         //app.getRoot()->startRendering();
         while (app.keepRunning())
         {
-            app.renderOneFrame();
+            app.GameLoopUpdate();
         }
         app.closeApp();
     }

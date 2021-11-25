@@ -7,16 +7,11 @@
 class PhysicsFrameListener : public Ogre::FrameListener
 {
 private:
-    std::vector<GameObject*> gameObjects;
     Game* gameInstance;
 public:
 
-    PhysicsFrameListener(std::vector<GameObject*> gameobjects, Game* gameinstanceref )
+    PhysicsFrameListener( Game* gameinstanceref )
     {
-        for (auto objects : gameobjects)
-        {
-            gameObjects.push_back(objects);
-        }
         gameInstance = gameinstanceref;
     }
 
@@ -34,10 +29,6 @@ public:
 
     bool frameRenderingQueued(const Ogre::FrameEvent& evt)
     {
-        for (auto objects : gameObjects)
-        {
-            objects->Update(evt);
-        }
         gameInstance->UpdateUI(evt);
         return true;
     }
@@ -124,7 +115,7 @@ void Game::CreateCamera()
 ///
 void Game::CreateFrameListener()
 {
-    Ogre::FrameListener* FrameListener = new PhysicsFrameListener(gameObjects, this);
+    Ogre::FrameListener* FrameListener = new PhysicsFrameListener(this);
     root->addFrameListener(FrameListener);
 }
 
@@ -219,6 +210,7 @@ void Game::CreateUI()
 /// this function updates the various UI elements per frame.
 /// It is used within the physics frame listener
 /// 
+
 void Game::UpdateUI(const Ogre::FrameEvent& evt)
 {
 
@@ -235,8 +227,7 @@ void Game::ObserverUpdate(Keycode keycode, EventType eventtype)
     {
         getRoot()->queueEndRendering();
         _keepRunning = false;
-    }
-        
+    } 
 }
 
 bool Game::keepRunning()
@@ -244,7 +235,11 @@ bool Game::keepRunning()
     return _keepRunning;
 }
 
-void Game::renderOneFrame()
+void Game::GameLoopUpdate()
 {
     mRoot->renderOneFrame();
+    for (auto objects : gameObjects)
+    {
+        objects->Update();
+    }
 }

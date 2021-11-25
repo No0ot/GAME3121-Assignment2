@@ -11,7 +11,8 @@ public:
 	GameObject(Game* gameInstance, SceneManager* scnmngr, std::string name);
 	~GameObject();
 
-	virtual void Update(const Ogre::FrameEvent& evt) = 0;
+	//virtual void Update(const Ogre::FrameEvent& evt) = 0;
+	virtual void Update() = 0;
 
 	Ogre::SceneNode* getNode();
 	void setNode(Ogre::SceneNode* newnode);

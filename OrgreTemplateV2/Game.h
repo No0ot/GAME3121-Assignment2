@@ -100,6 +100,6 @@ public:
     void ObserverUpdate(Keycode, EventType) override;
 
     bool keepRunning();
-    void renderOneFrame();
+    void GameLoopUpdate();
 };
 

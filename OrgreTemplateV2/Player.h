@@ -8,7 +8,7 @@ public:
 	~Player();
 
 	void ObserverUpdate(Keycode, EventType) override;
-	void Update(const Ogre::FrameEvent& evt) override;
+	void Update() override;
 private:
 	bool moveDown;
 	bool moveUp;

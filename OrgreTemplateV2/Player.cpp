@@ -51,7 +51,8 @@ void Player::ObserverUpdate(Keycode keycode, EventType eventtype)
 		moveUp = false;
 }
 
-void Player::Update(const Ogre::FrameEvent& evt)
+// actual game update
+void Player::Update()
 {
 	if (moveDown)
 		node->translate(Ogre::Vector3(0.0f,-1.0f,0.0f));
