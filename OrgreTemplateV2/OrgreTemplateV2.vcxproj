@@ -118,13 +118,13 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(OGRE_HOME_V2)/Components/Bites/Include;$(OGRE_HOME_V2)/OgreMain/Include;$(OGRE_HOME_V2)/Components/Overlay/Include;$(OGRE_HOME_V2)/Components/Paging/Include;$(OGRE_HOME_V2)/Components/Terrain/Include;$(OGRE_HOME_V2)/Build/Include;$(OGRE_HOME_V2)/Components/RTShaderSystem/Include;$(OGRE_HOME_V2)/build/SDL2-2.0.8/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(OGRE_HOME_V2)/Components/Bites/Include;$(OGRE_HOME_V2)/OgreMain/Include;$(OGRE_HOME_V2)/Components/Overlay/Include;$(OGRE_HOME_V2)/Components/Paging/Include;$(OGRE_HOME_V2)/Components/Terrain/Include;$(OGRE_HOME_V2)/Build/Include;$(OGRE_HOME_V2)/Components/RTShaderSystem/Include;$(OGRE_HOME_V2)/build/SDL2-2.0.8/include;$(SolutionDir)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(OGRE_HOME_V2)/build/lib/Debug;$(OGRE_HOME_V2)/build/SDL2-build/RelWithDebInfo;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>OgreMain_d.lib;OgreBites_d.lib;OgreRTShaderSystem_d.lib;OgreOverlay_d.lib;OgreTerrain_d.lib;OgrePaging_d.lib;$(OGRE_HOME_V2)\build\SDL2-build\RelWithDebInfo\SDL2.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(OGRE_HOME_V2)/build/lib/Debug;$(OGRE_HOME_V2)/build/SDL2-build/RelWithDebInfo;$(SolutionDir)include;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>OgreMain_d.lib;OgreBites_d.lib;OgreRTShaderSystem_d.lib;OgreOverlay_d.lib;OgreTerrain_d.lib;OgrePaging_d.lib;$(OGRE_HOME_V2)\build\SDL2-build\RelWithDebInfo\SDL2.lib;$(OGRE_HOME_V2)\build\SDL2-build\RelWithDebInfo\SDL2main.lib;$(SolutionDir)include\SDL2_mixer.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
       <Command>
