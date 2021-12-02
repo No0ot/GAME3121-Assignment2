@@ -1,5 +1,6 @@
 /*! Game class used to build the application and set-up the game world */
 #include "Game.h"
+#include "SoundManager.h"
 
 /// Custom FrameListener. 
 /// Keeps references to physics objects to call their update functions. 
@@ -60,8 +61,9 @@ void Game::setup()
     this->AttachToSubject(*temp);
     temp = mInputManager->GetInputSubject(SDLK_SPACE, EventType::KEYDOWN);
     this->AttachToSubject(*temp);
-    sndMngr = new SoundManager();
-
+    //sndMngr = new SoundManager();
+   
+    TheSoundManager::Instance()->load("music.wav", "Music", sound_type::SOUND_MUSIC);
     // get a pointer to the already created root
     root = getRoot();
     scnMgr = root->createSceneManager();
@@ -102,6 +104,7 @@ void Game::CreateScene()
     CreatePhysicsObjects();
     CreateUI();
     //sndMngr->PlayMusic();
+    TheSoundManager::Instance()->playMusic("Music", -1, 32);
 }
 
 /// Create Camera Function:
@@ -238,7 +241,8 @@ void Game::ObserverUpdate(Keycode keycode, EventType eventtype)
     } 
     if (keycode == SDLK_SPACE && eventtype == EventType::KEYDOWN)
     {
-        sndMngr->PlaySound();
+        //sndMngr->PlaySound();
+        
     }
 }
 

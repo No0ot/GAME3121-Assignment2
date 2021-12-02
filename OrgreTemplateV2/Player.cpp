@@ -1,5 +1,6 @@
 #include "Player.h"
 #include "Game.h"
+#include "SoundManager.h"
 
 Player::Player(Game* gameInstance, SceneManager* scnmngr, std::string name) : GameObject(gameInstance,scnmngr, name ), PhysicsObject(node)
 {
@@ -17,6 +18,8 @@ Player::Player(Game* gameInstance, SceneManager* scnmngr, std::string name) : Ga
 	AttachToSubject(*temp);
 	temp = mGameReference->mInputManager->GetInputSubject('w', EventType::KEYUP);
 	AttachToSubject(*temp);
+
+	TheSoundManager::Instance()->load("Jump.wav", "Jump", sound_type::SOUND_SFX);
 
 	Ogre::ManualObject* cubeMesh = MyMesh::createSphereMesh("Sphere", "FlatVertexColour", 1.0f, Ogre::Vector3(1.0, 0.0f, 0.0f));
 	node->attachObject(cubeMesh);
@@ -49,7 +52,10 @@ void Player::ObserverUpdate(Keycode keycode, EventType eventtype)
 	if ((keycode == 's' || keycode == SDLK_DOWN) && eventtype == EventType::KEYUP)
 		moveDown = false;
 	if ((keycode == 'w' || keycode == SDLK_UP || keycode == SDLK_SPACE) && eventtype == EventType::KEYDOWN)
+	{
 		moveUp = true;
+		TheSoundManager::Instance()->playSound("Jump", 0, 64);
+	}
 	if ((keycode == 'w' || keycode == SDLK_UP || keycode == SDLK_SPACE) && eventtype == EventType::KEYUP)
 		moveUp = false;
 	if ((keycode == 'a' || keycode == SDLK_LEFT ) && eventtype == EventType::KEYDOWN)

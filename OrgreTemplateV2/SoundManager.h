@@ -1,43 +1,47 @@
 #pragma once
+#ifndef __SoundManager__
+#define __SoundManager__
 
-#include "SDL_audio.h"
-
+// Core Libraries
 #include <iostream>
 #include <string>
-#include <map>
+#include <map> 
 
-enum SoundType
+#include <SDL_mixer.h>
+
+enum sound_type
 {
 	SOUND_MUSIC = 0,
 	SOUND_SFX = 1
 };
 
-static Uint8* audio_pos; // global pointer to the audio buffer to be played
-static Uint32 audio_len; // remaining length of the sample we have to play
-void AudioCallback(void* userdata, Uint8* stream, int len);
+class SoundManager {
+public:
+	static SoundManager* Instance()
+	{
+		if (s_pInstance == 0)
+		{
+			s_pInstance = new SoundManager();
+			return s_pInstance;
+		}
+		return s_pInstance;
+	}
 
-static Uint8* musicaudio_pos; // global pointer to the audio buffer to be played
-static Uint32 musicaudio_len; // remaining length of the sample we have to play
-void MusicAudioCallback(void* userdata, Uint8* stream, int len);
+	bool load(std::string fileName, std::string id, sound_type type);
+	void playSound(std::string id, int loop, int volume);
+	void playMusic(std::string id, int loop, int volume);
+private:
+	static SoundManager* s_pInstance;
 
-class SoundManager
-{
-public: 
-
-	bool Load(std::string filename, std::string id, SoundType type);
-	void PlaySound();
-	void PlayMusic();
+	std::map<std::string, Mix_Chunk*> m_sfxs;
+	std::map<std::string, Mix_Music*> m_music;
 
 	SoundManager();
 	~SoundManager();
-	
-private:
 
-	SDL_AudioSpec audioSettings;
-	static Uint32 wav_length; // length of our sample
-	static Uint8* wav_buffer; // buffer containing our audio file
-
+	SoundManager(const SoundManager&);
 };
 
+typedef SoundManager TheSoundManager;
 
-
+#endif /* defined (__SoundManager__) */
