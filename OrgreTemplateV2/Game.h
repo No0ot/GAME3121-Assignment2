@@ -8,6 +8,7 @@
 #include "Player.h"
 #include "Platform.h"
 
+#include "SoundManager.h"
 #include <iostream>
 
 using namespace Ogre;
@@ -29,6 +30,7 @@ private:
     std::vector<GameObject*> gameObjects;
     std::vector<Platform*> platformObjects;
 
+    SoundManager* sndMngr;
     Player* playerObject;
     Ogre::SceneNode* ballNode;
     TrayManager* mTrayMgr;

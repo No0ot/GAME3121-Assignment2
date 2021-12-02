@@ -56,7 +56,11 @@ void Game::setup()
     mInputManager = new InputManager();
     addInputListener(mInputManager);
     InputSubject* temp = mInputManager->GetInputSubject(SDLK_ESCAPE, EventType::KEYDOWN);
+
     this->AttachToSubject(*temp);
+    temp = mInputManager->GetInputSubject(SDLK_SPACE, EventType::KEYDOWN);
+    this->AttachToSubject(*temp);
+    sndMngr = new SoundManager();
 
     // get a pointer to the already created root
     root = getRoot();
@@ -106,6 +110,7 @@ void Game::CreateScene()
     CreateBackground();
     CreatePhysicsObjects();
     CreateUI();
+    //sndMngr->PlayMusic();
 }
 
 /// Create Camera Function:
@@ -240,6 +245,10 @@ void Game::ObserverUpdate(Keycode keycode, EventType eventtype)
         getRoot()->queueEndRendering();
         _keepRunning = false;
     } 
+    if (keycode == SDLK_SPACE && eventtype == EventType::KEYDOWN)
+    {
+        sndMngr->PlaySound();
+    }
 }
 
 bool Game::keepRunning()
