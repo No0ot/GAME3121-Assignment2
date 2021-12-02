@@ -69,6 +69,15 @@ void Game::setup()
     playerObject = new Player(this, this->scnMgr, "Player");
     gameObjects.push_back(playerObject);
 
+    for (int i = 0; i < 2; i++)
+    {
+        Platform* temp = new Platform(this, this->scnMgr, "Platform_" + i);
+        platformObjects.push_back(temp);
+        gameObjects.push_back(temp);
+    }
+    platformObjects[0]->GetNode()->translate(0, 0.0f, 0);
+    platformObjects[1]->GetNode()->translate(10.0f, 10.0f, 0);
+
     CreateScene();
     CreateCamera();
     CreateFrameListener();
@@ -244,5 +253,44 @@ void Game::GameLoopUpdate()
     for (auto objects : gameObjects)
     {
         objects->Update();
+    }
+
+    CheckPlayerCollision();
+}
+
+void Game::CheckPlayerCollision()
+{
+    playerObject->SetGrounded(false);
+    for (int i = 0; i < platformObjects.size(); i++)
+    {
+        if (playerObject->GetNode()->_getWorldAABB().intersects(platformObjects[i]->GetNode()->_getWorldAABB()))
+        {
+            float dist = playerObject->GetNode()->_getWorldAABB().getCorner(Ogre::AxisAlignedBox::CornerEnum::FAR_LEFT_BOTTOM).y - 
+                platformObjects[i]->GetNode()->_getWorldAABB().getCorner(Ogre::AxisAlignedBox::CornerEnum::FAR_LEFT_TOP).y;
+            //std::cout << dist << std::endl;
+            if (dist < 1.65f && dist > -1.65f)
+            {
+                //std::cout << ">>> Player on platform" << std::endl;
+                playerObject->SetGrounded(true);
+                // RESOLVE CLIPPING
+                /*std::cout << "player: ";
+                std::cout << playerObject->GetNode()->getPosition().y - playerObject->GetNode()->_getWorldAABB().getHalfSize().y << std::endl;
+                std::cout << "platform: ";
+                std::cout << platformObjects[i]->GetNode()->_getWorldAABB().getCorner(Ogre::AxisAlignedBox::CornerEnum::FAR_LEFT_TOP).y << std::endl;
+                playerObject->GetNode()->setPosition(playerObject->GetNode()->getPosition().x,
+                    platformObjects[i]->GetNode()->_getWorldAABB().getCorner(Ogre::AxisAlignedBox::CornerEnum::FAR_LEFT_TOP).y + playerObject->GetNode()->_getWorldAABB().getHalfSize().y,
+                    playerObject->GetNode()->getPosition().z);*/
+                break;
+            }
+        }
+    }
+    Ogre::Vector3 player_screen_pos = cam_->getProjectionMatrix() * cam_->getViewMatrix() *
+        playerObject->GetNode()->_getWorldAABB().getCenter();
+        //playerObject->GetNode()->convertLocalToWorldPosition(playerObject->GetNode()->getPosition());
+    //std::cout << player_screen_pos << std::endl;
+    if (player_screen_pos.y <= -1) //DEATH
+    {
+        //std::cout << ">>> Player out of screen" << std::endl;
+        playerObject->SetGrounded(true);
     }
 }

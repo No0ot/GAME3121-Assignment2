@@ -1,0 +1,25 @@
+#include "Platform.h"
+#include "Game.h"
+
+Platform::Platform(Game* gameInstance, SceneManager* scnmngr, std::string name) : GameObject(gameInstance,scnmngr, name ), PhysicsObject(node)
+{
+	Ogre::ManualObject* cubeMesh = MyMesh::createCubeMesh("Platform", "FlatVertexColour", Ogre::Vector3(0.0, 0.0f, 1.0f));
+	node->attachObject(cubeMesh);
+	node->showBoundingBox(true);
+	node->setScale(7.0f, 1.0f, 1.0f);
+	node->setPosition(0, 0, 0);
+
+	SetStatic(true);
+}
+
+Platform::~Platform()
+{
+}
+
+void Platform::ObserverUpdate(Keycode keycode, EventType eventtype)
+{
+}
+
+void Platform::Update()
+{
+}

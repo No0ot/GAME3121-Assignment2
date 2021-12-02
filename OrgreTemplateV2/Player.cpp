@@ -17,6 +17,14 @@ Player::Player(Game* gameInstance, SceneManager* scnmngr, std::string name) : Ga
 	AttachToSubject(*temp);
 	temp = mGameReference->mInputManager->GetInputSubject('w', EventType::KEYUP);
 	AttachToSubject(*temp);
+	temp = mGameReference->mInputManager->GetInputSubject('a', EventType::KEYDOWN);
+	AttachToSubject(*temp);
+	temp = mGameReference->mInputManager->GetInputSubject('a', EventType::KEYUP);
+	AttachToSubject(*temp);
+	temp = mGameReference->mInputManager->GetInputSubject('d', EventType::KEYDOWN);
+	AttachToSubject(*temp);
+	temp = mGameReference->mInputManager->GetInputSubject('d', EventType::KEYUP);
+	AttachToSubject(*temp);
 
 	Ogre::ManualObject* cubeMesh = MyMesh::createSphereMesh("Sphere", "FlatVertexColour", 1.0f, Ogre::Vector3(1.0, 0.0f, 0.0f));
 	node->attachObject(cubeMesh);
@@ -25,8 +33,9 @@ Player::Player(Game* gameInstance, SceneManager* scnmngr, std::string name) : Ga
 	node->setPosition(0, 15, 0);
 	moveDown = false;
 
-	speed_ = 0.65f;
-	jump_force_ = 0.8f;
+	speed_ = 0.4f;
+	jump_force_ = 0.5f;
+	fall_multiplier_ = 1.25f;
 }
 
 Player::~Player()
@@ -36,12 +45,12 @@ Player::~Player()
 // handles Input events
 void Player::ObserverUpdate(Keycode keycode, EventType eventtype)
 {
-	if (keycode == SDLK_SPACE && eventtype == EventType::KEYDOWN)
+	/*if (keycode == SDLK_SPACE && eventtype == EventType::KEYDOWN)
 		std::cout << "SOMETHING HAPPENS DOWN" << std::endl;
 	if (keycode == SDLK_SPACE && eventtype == EventType::KEYUP)
 		std::cout << "SOMETHING HAPPENS UP" << std::endl;
 	if (keycode == SDLK_DOWN && eventtype == EventType::KEYDOWN)
-		std::cout << "SOMETHING DOWNWNWNWNDWN" << std::endl;
+		std::cout << "SOMETHING DOWNWNWNWNDWN" << std::endl;*/
 
 
 	if ((keycode == 's' || keycode == SDLK_DOWN) && eventtype == EventType::KEYDOWN)
@@ -79,6 +88,19 @@ void Player::Update()
 	{
 		//node->translate(Ogre::Vector3(0.0f, 1.0f, 0.0f));
 		SetVelocity(Ogre::Vector3(GetVelocity().x, jump_force_, GetVelocity().z));
+	}
+
+	if (moveLeft)
+	{
+		SetVelocity(Ogre::Vector3(-speed_, GetVelocity().y, GetVelocity().z));
+	}
+	else if (moveRight)
+	{
+		SetVelocity(Ogre::Vector3(speed_, GetVelocity().y, GetVelocity().z));
+	}
+	else
+	{
+		SetVelocity(Ogre::Vector3(0.0f, GetVelocity().y, GetVelocity().z));
 	}
 
 	PhysicsUpdate();

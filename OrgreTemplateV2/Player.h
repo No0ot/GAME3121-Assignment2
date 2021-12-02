@@ -18,4 +18,5 @@ private:
 	bool moveRight;
 	float speed_;
 	float jump_force_;
+	float fall_multiplier_;
 };

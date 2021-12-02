@@ -14,7 +14,7 @@ GameObject::~GameObject()
 /// Returns a reference to the attached Manual object(mesh)
 /// </summary>
 /// <returns> Returns mesh member </returns>
-Ogre::SceneNode* GameObject::getNode()
+Ogre::SceneNode* GameObject::GetNode()
 {
 	return node;
 }
@@ -23,7 +23,7 @@ Ogre::SceneNode* GameObject::getNode()
 /// Sets the reference to a SceneNode
 /// </summary>
 /// <param name="newnode"> Reference to the SceneNode to be attached</param>
-void GameObject::setNode(Ogre::SceneNode* newnode)
+void GameObject::SetNode(Ogre::SceneNode* newnode)
 {
 	node = newnode;
 }

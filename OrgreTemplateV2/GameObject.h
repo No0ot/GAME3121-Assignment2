@@ -14,8 +14,8 @@ public:
 	//virtual void Update(const Ogre::FrameEvent& evt) = 0;
 	virtual void Update() = 0;
 
-	Ogre::SceneNode* getNode();
-	void setNode(Ogre::SceneNode* newnode);
+	Ogre::SceneNode* GetNode();
+	void SetNode(Ogre::SceneNode* newnode);
 
 	virtual void ObserverUpdate(Keycode, EventType) = 0;
 

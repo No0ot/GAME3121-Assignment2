@@ -6,6 +6,7 @@
 #include "OgreTrays.h"
 #include "InputManager.h"
 #include "Player.h"
+#include "Platform.h"
 
 #include <iostream>
 
@@ -26,6 +27,7 @@ private:
     Camera* cam_;
 
     std::vector<GameObject*> gameObjects;
+    std::vector<Platform*> platformObjects;
 
     Player* playerObject;
     Ogre::SceneNode* ballNode;
@@ -103,5 +105,7 @@ public:
 
     bool keepRunning();
     void GameLoopUpdate();
+
+    void CheckPlayerCollision();
 };
 
