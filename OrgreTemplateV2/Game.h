@@ -6,7 +6,7 @@
 #include "OgreTrays.h"
 #include "InputManager.h"
 #include "Player.h"
-
+#include "SoundManager.h"
 #include <iostream>
 
 using namespace Ogre;
@@ -26,7 +26,7 @@ private:
     Camera* cam_;
 
     std::vector<GameObject*> gameObjects;
-
+    SoundManager* sndMngr;
     Player* playerObject;
     Ogre::SceneNode* ballNode;
     TrayManager* mTrayMgr;
