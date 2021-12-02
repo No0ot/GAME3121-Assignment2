@@ -10,10 +10,15 @@ GameObject::~GameObject()
 {
 }
 
+/// <summary>
+/// Returns a reference to the attached Manual object(mesh)
+/// </summary>
+/// <returns> Returns mesh member </returns>
 Ogre::SceneNode* GameObject::getNode()
 {
 	return node;
 }
+
 /// <summary>
 /// Sets the reference to a SceneNode
 /// </summary>
@@ -22,7 +27,3 @@ void GameObject::setNode(Ogre::SceneNode* newnode)
 {
 	node = newnode;
 }
-/// <summary>
-/// Returns a reference to the attached Manual object(mesh)
-/// </summary>
-/// <returns> Returns mesh member </returns>

@@ -18,9 +18,9 @@ public:
 	void setNode(Ogre::SceneNode* newnode);
 
 	virtual void ObserverUpdate(Keycode, EventType) = 0;
+
 protected:
 	Game* mGameReference;
 	Ogre::SceneNode* node;
 	Ogre::ManualObject* mesh;
 };
-

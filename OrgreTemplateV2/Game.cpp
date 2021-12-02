@@ -8,8 +8,8 @@ class PhysicsFrameListener : public Ogre::FrameListener
 {
 private:
     Game* gameInstance;
-public:
 
+public:
     PhysicsFrameListener( Game* gameinstanceref )
     {
         gameInstance = gameinstanceref;
@@ -33,6 +33,7 @@ public:
         return true;
     }
 };
+
 /// Game class Constructor
 /// 
 /// 
@@ -44,6 +45,7 @@ Game::Game()
 Game::~Game()
 {
 }
+
 /// Main setup function
 /// calls the super setup function as well as gets references to the root and SceneManager
 /// 
@@ -96,20 +98,22 @@ void Game::CreateScene()
     CreatePhysicsObjects();
     CreateUI();
 }
+
 /// Create Camera Function:
 /// Creates the game world camera and binds it to a scenenode
 ///
 void Game::CreateCamera()
 {
     SceneNode* camNode = scnMgr->getRootSceneNode()->createChildSceneNode();
-    Camera* cam = scnMgr->createCamera("myCam");
-    cam->setNearClipDistance(5);
-    cam->setAutoAspectRatio(true);
-    camNode->attachObject(cam);
+    cam_ = scnMgr->createCamera("myCam");
+    cam_->setNearClipDistance(5);
+    cam_->setAutoAspectRatio(true);
+    camNode->attachObject(cam_);
     camNode->setPosition(0, 0, 50);
 
-    getRenderWindow()->addViewport(cam);
+    getRenderWindow()->addViewport(cam_);
 }
+
 /// Creates the custom observer class framelistener :
 /// Creates the custom PhysicsFrameListener while passing in a vector of all the physics objects along with a refrence to the game instance
 ///
@@ -144,14 +148,13 @@ void Game::CreateBackground()
     //And finally we need to give our ground a material.
     groundEntity->setMaterialName("Examples/Rockwall");
 }
+
 /// Create Lights Function :
 /// Creates all the lights needed for the scene
 /// 
 void Game::CreateLights()
 {
-
     scnMgr->setAmbientLight(ColourValue(0.5, 0.5, 0.5));
-
 
     Light* light = scnMgr->createLight("MainLight");
     SceneNode* mainlightNode = scnMgr->getRootSceneNode()->createChildSceneNode();
@@ -172,6 +175,7 @@ void Game::CreateLights()
     lightNode->attachObject(light1);
     lightNode->setScale(0.01f, 0.01f, 0.01f);
 }
+
 /// Create Physics Objects function:
 /// Creates the custom meshes and objects used within the scene
 ///
@@ -179,6 +183,7 @@ void Game::CreatePhysicsObjects()
 {
 
 }
+
 /// Creates the UI:
 /// Creates the traymanager and the different labels present within the scene
 ///
@@ -204,16 +209,14 @@ void Game::CreateUI()
 
     mLivesLabel = mTrayMgr->createLabel(TL_TOPLEFT, "Lives", "Lives:", 150);
     mLives = mTrayMgr->createLabel(TL_TOPLEFT, "lives", livesnum, 150);
-
 }
+
 /// A function to update the UI
 /// this function updates the various UI elements per frame.
 /// It is used within the physics frame listener
 /// 
-
 void Game::UpdateUI(const Ogre::FrameEvent& evt)
 {
-
     Tpunum = Ogre::StringConverter::toString(evt.timeSinceLastFrame);
     mTpu->setCaption(Tpunum);
 

@@ -12,7 +12,7 @@ public:
 	void Update(Keycode, EventType);
 	virtual void ObserverUpdate(Keycode,EventType) = 0;
 
-
 private:
+
 };
 

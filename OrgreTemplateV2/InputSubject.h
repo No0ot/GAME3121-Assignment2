@@ -8,7 +8,6 @@ using namespace Ogre;
 using namespace OgreBites;
 class InputObserver;
 
-
 class InputSubject
 {
 public:
