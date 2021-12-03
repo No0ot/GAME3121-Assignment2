@@ -1,7 +1,4 @@
 #pragma once
-#ifndef __SoundManager__
-#define __SoundManager__
-
 // Core Libraries
 #include <iostream>
 #include <string>
@@ -70,5 +67,3 @@ private:
 };
 
 typedef SoundManager TheSoundManager;
-
-#endif /* defined (__SoundManager__) */
