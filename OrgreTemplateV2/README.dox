@@ -9,6 +9,8 @@
 
 Use A,D to move the player. Jump as high as you can before losing 3 lives!
 
+Engines Used: InputManager, SoundManager, MeshManager(MyMesh), Physics, CollisionManager
+
 
 
 */
