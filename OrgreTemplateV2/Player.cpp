@@ -74,22 +74,6 @@ void Player::ObserverUpdate(Keycode keycode, EventType eventtype)
 // actual game update
 void Player::Update()
 {
-	//if (moveDown) 
-	//{
-	//	//node->translate(Ogre::Vector3(0.0f,-1.0f,0.0f));
-	//	SetVelocity(Ogre::Vector3(GetVelocity().x, -speed_, GetVelocity().z));
-	//}
-	//else
-	//{
-	//	SetVelocity(Ogre::Vector3(GetVelocity().x, 0.0f, GetVelocity().z));
-	//}
-		
-	//if (moveUp) //JUMP
-	//{
-	//	//node->translate(Ogre::Vector3(0.0f, 1.0f, 0.0f));
-	//	DoJump();
-	//}
-
 	if (moveLeft)
 	{
 		SetVelocity(Ogre::Vector3(-speed_, GetVelocity().y, GetVelocity().z));

@@ -80,43 +80,11 @@ void Game::setup()
 
     CreateScene();
     CreateCamera();
-
-    playerObject = new Player(this, this->scnMgr, "Player");
-    gameObjects.push_back(playerObject);
-
-    platform_max_y_ = 0;
-    for (int i = 0; i < 30; i++)
-    {
-        Platform* temp = new Platform(this, this->scnMgr, "Platform_" + Ogre::StringConverter::toString(i));
-        platformObjects.push_back(temp);
-        gameObjects.push_back(temp);
-        temp->GetNode()->translate(Ogre::Math::RangeRandom(-15.0f, 15.0f), platform_max_y_, 0);
-        platform_max_y_ += Ogre::Math::RangeRandom(5.0f, 8.5f);
-    }
-    platformObjects[0]->GetNode()->setPosition(playerObject->GetNode()->getPosition().x, playerObject->GetNode()->getPosition().y - 10, platformObjects[0]->GetNode()->getPosition().z);
-    //Ogre::Vector4 temp_vect = Ogre::Vector4(1,1,0,1) * (cam_->getProjectionMatrix() * cam_->getViewMatrix()).inverse();
+    CreateFrameListener();
 
     mPlayerJumps = 0;
     mPlayerLives = 3;
-
-    CreateFrameListener();
 }
-
-/// Input detection function for keydown
-/// Handles input detection for keyboard buttons pressed down
-/// Basic Controls for the game
-//bool Game::keyPressed(const KeyboardEvent& evt)
-//{
-//
-//   
-//}
-///// Input detection for Keyup
-///// used to smooth movement of the paddle object
-///// 
-//bool Game::keyReleased(const KeyboardEvent& evt)
-//{
-//   
-//}
 
 /// Create Scene Function
 /// Calls the other functions that create the main objects in the game
@@ -214,7 +182,20 @@ void Game::CreateLights()
 ///
 void Game::CreatePhysicsObjects()
 {
+    playerObject = new Player(this, this->scnMgr, "Player");
+    gameObjects.push_back(playerObject);
 
+    platform_max_y_ = 0;
+    for (int i = 0; i < 30; i++)
+    {
+        Platform* temp = new Platform(this, this->scnMgr, "Platform_" + Ogre::StringConverter::toString(i));
+        platformObjects.push_back(temp);
+        gameObjects.push_back(temp);
+        temp->GetNode()->translate(Ogre::Math::RangeRandom(-15.0f, 15.0f), platform_max_y_, 0);
+        platform_max_y_ += Ogre::Math::RangeRandom(5.0f, 8.5f);
+    }
+    platformObjects[0]->GetNode()->setPosition(playerObject->GetNode()->getPosition().x, playerObject->GetNode()->getPosition().y - 10, platformObjects[0]->GetNode()->getPosition().z);
+    //Ogre::Vector4 temp_vect = Ogre::Vector4(1,1,0,1) * (cam_->getProjectionMatrix() * cam_->getViewMatrix()).inverse();
 }
 
 /// Creates the UI:
@@ -273,7 +254,7 @@ void Game::ObserverUpdate(Keycode keycode, EventType eventtype)
     {
         for (auto objects : gameObjects)
         {
-            objects->GetNode()->showBoundingBox(false);
+            objects->GetNode()->showBoundingBox(!objects->GetNode()->getShowBoundingBox());
         }
         
     }
@@ -304,17 +285,6 @@ void Game::GameLogicCheck()
     {
         if (CollisionManager::AABBCheck(playerObject, platformObjects[i]) == CollisionManager::CollisionType::kBottom)
         {
-            //std::cout << ">>> Player on platform" << std::endl;
-            //playerObject->SetGrounded(true);
-
-            // RESOLVE CLIPPING
-            /*std::cout << "player: ";
-            std::cout << playerObject->GetNode()->getPosition().y - playerObject->GetNode()->_getWorldAABB().getHalfSize().y << std::endl;
-            std::cout << "platform: ";
-            std::cout << platformObjects[i]->GetNode()->_getWorldAABB().getCorner(Ogre::AxisAlignedBox::CornerEnum::FAR_LEFT_TOP).y << std::endl;
-            playerObject->GetNode()->setPosition(playerObject->GetNode()->getPosition().x,
-                platformObjects[i]->GetNode()->_getWorldAABB().getCorner(Ogre::AxisAlignedBox::CornerEnum::FAR_LEFT_TOP).y + playerObject->GetNode()->_getWorldAABB().getHalfSize().y,
-                playerObject->GetNode()->getPosition().z);*/
             if (playerObject->GetVelocity().y <= 0)
             {
                     mPlayerJumps++;
