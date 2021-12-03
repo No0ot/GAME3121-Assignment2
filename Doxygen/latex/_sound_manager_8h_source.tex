@@ -1,0 +1,43 @@
+\hypertarget{_sound_manager_8h_source}{}\doxysection{Sound\+Manager.\+h}
+\label{_sound_manager_8h_source}\index{OrgreTemplateV2/SoundManager.h@{OrgreTemplateV2/SoundManager.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 \textcolor{comment}{// Core Libraries}}
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include <map>} }
+\DoxyCodeLine{6 }
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include <SDL\_mixer.h>}}
+\DoxyCodeLine{11 \textcolor{keyword}{enum} sound\_type}
+\DoxyCodeLine{12 \{}
+\DoxyCodeLine{13     SOUND\_MUSIC = 0,}
+\DoxyCodeLine{14     SOUND\_SFX = 1}
+\DoxyCodeLine{15 \};}
+\DoxyCodeLine{20 \textcolor{keyword}{class }\mbox{\hyperlink{class_sound_manager}{SoundManager}} \{}
+\DoxyCodeLine{21 \textcolor{keyword}{public}:}
+\DoxyCodeLine{26     \textcolor{keyword}{static} \mbox{\hyperlink{class_sound_manager}{SoundManager}}* \mbox{\hyperlink{class_sound_manager_afb88058c46a2036b74f2775fc0cc2731}{Instance}}()}
+\DoxyCodeLine{27     \{}
+\DoxyCodeLine{28         \textcolor{keywordflow}{if} (s\_pInstance == 0)}
+\DoxyCodeLine{29         \{}
+\DoxyCodeLine{30             s\_pInstance = \textcolor{keyword}{new} \mbox{\hyperlink{class_sound_manager}{SoundManager}}();}
+\DoxyCodeLine{31             \textcolor{keywordflow}{return} s\_pInstance;}
+\DoxyCodeLine{32         \}}
+\DoxyCodeLine{33         \textcolor{keywordflow}{return} s\_pInstance;}
+\DoxyCodeLine{34     \}}
+\DoxyCodeLine{42     \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_sound_manager_acf34a5ccff062eb30f4930b2426d23de}{load}}(std::string fileName, std::string \textcolor{keywordtype}{id}, sound\_type type);}
+\DoxyCodeLine{49     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_sound_manager_ab7fa2f8dd23606003a1d88245031ebef}{playSound}}(std::string \textcolor{keywordtype}{id}, \textcolor{keywordtype}{int} loop, \textcolor{keywordtype}{int} volume);}
+\DoxyCodeLine{56     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_sound_manager_a92f88d8f6ab6c257ab8decc5fc87365b}{playMusic}}(std::string \textcolor{keywordtype}{id}, \textcolor{keywordtype}{int} loop, \textcolor{keywordtype}{int} volume);}
+\DoxyCodeLine{57 \textcolor{keyword}{private}:}
+\DoxyCodeLine{58     \textcolor{keyword}{static} \mbox{\hyperlink{class_sound_manager}{SoundManager}}* s\_pInstance; }
+\DoxyCodeLine{60     std::map<std::string, Mix\_Chunk*> m\_sfxs; }
+\DoxyCodeLine{61     std::map<std::string, Mix\_Music*> m\_music; }
+\DoxyCodeLine{63     \mbox{\hyperlink{class_sound_manager}{SoundManager}}();}
+\DoxyCodeLine{64     \mbox{\hyperlink{class_sound_manager}{\string~SoundManager}}();}
+\DoxyCodeLine{65 }
+\DoxyCodeLine{66     \mbox{\hyperlink{class_sound_manager}{SoundManager}}(\textcolor{keyword}{const} \mbox{\hyperlink{class_sound_manager}{SoundManager}}\&);}
+\DoxyCodeLine{67 \};}
+\DoxyCodeLine{68 }
+\DoxyCodeLine{69 \textcolor{keyword}{typedef} \mbox{\hyperlink{class_sound_manager}{SoundManager}} \mbox{\hyperlink{class_sound_manager}{TheSoundManager}};}
+
+\end{DoxyCode}

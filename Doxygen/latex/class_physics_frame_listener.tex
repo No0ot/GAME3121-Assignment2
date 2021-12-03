@@ -1,0 +1,31 @@
+\hypertarget{class_physics_frame_listener}{}\doxysection{Physics\+Frame\+Listener Class Reference}
+\label{class_physics_frame_listener}\index{PhysicsFrameListener@{PhysicsFrameListener}}
+Inheritance diagram for Physics\+Frame\+Listener\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_physics_frame_listener}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_physics_frame_listener_a6d83966d5bdf01bd7109575a7c965a63}\label{class_physics_frame_listener_a6d83966d5bdf01bd7109575a7c965a63}} 
+{\bfseries Physics\+Frame\+Listener} (\mbox{\hyperlink{class_game}{Game}} $\ast$gameinstanceref)
+\item 
+\mbox{\Hypertarget{class_physics_frame_listener_a728af2d13d2211b59116053a42862a25}\label{class_physics_frame_listener_a728af2d13d2211b59116053a42862a25}} 
+bool {\bfseries frame\+Started} (const Ogre\+::\+Frame\+Event \&evt)
+\item 
+\mbox{\Hypertarget{class_physics_frame_listener_a535cde3d5713f8ce4816badaa444f740}\label{class_physics_frame_listener_a535cde3d5713f8ce4816badaa444f740}} 
+bool {\bfseries frame\+Ended} (const Ogre\+::\+Frame\+Event \&evt)
+\item 
+\mbox{\Hypertarget{class_physics_frame_listener_a28a215e67cfefec41ddfbc180fa180e2}\label{class_physics_frame_listener_a28a215e67cfefec41ddfbc180fa180e2}} 
+bool {\bfseries frame\+Rendering\+Queued} (const Ogre\+::\+Frame\+Event \&evt)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\mbox{\hyperlink{class_game}{Game}} class used to build the application and set-\/up the game world Custom Frame\+Listener. Keeps references to physics objects to call their update functions. Also keeps a reference to the game instance to call the update on the UI 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Orgre\+Template\+V2/Game.\+cpp\end{DoxyCompactItemize}

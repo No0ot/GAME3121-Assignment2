@@ -1,0 +1,68 @@
+\hypertarget{class_platform}{}\doxysection{Platform Class Reference}
+\label{class_platform}\index{Platform@{Platform}}
+
+
+\mbox{\hyperlink{class_game_object}{Game\+Object}} class for the platforms that player jumps on, is also a \mbox{\hyperlink{class_physics_object}{Physics\+Object}}.  
+
+
+
+
+{\ttfamily \#include $<$Platform.\+h$>$}
+
+Inheritance diagram for Platform\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_platform}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_platform_ab34501a9fccb817035e02fd0121acaf8}\label{class_platform_ab34501a9fccb817035e02fd0121acaf8}} 
+{\bfseries Platform} (\mbox{\hyperlink{class_game}{Game}} $\ast$game\+Instance, Scene\+Manager $\ast$scnmngr, std\+::string name)
+\item 
+void \mbox{\hyperlink{class_platform_a14d74d3abcd333b585c4eecf0db66ce4}{Observer\+Update}} (Keycode, Event\+Type) override
+\begin{DoxyCompactList}\small\item\em Virtual function that gets called when the \mbox{\hyperlink{class_input_observer}{Input\+Observer}} base class gets notified by a subject. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_platform_a1c4fbb1ad1c99246c90c0ecf437ed3d0}{Update}} () override
+\begin{DoxyCompactList}\small\item\em Virtual Update Function for game loop to call during its update. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+\mbox{\hyperlink{class_game_object}{Game\+Object}} class for the platforms that player jumps on, is also a \mbox{\hyperlink{class_physics_object}{Physics\+Object}}. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_platform_a14d74d3abcd333b585c4eecf0db66ce4}\label{class_platform_a14d74d3abcd333b585c4eecf0db66ce4}} 
+\index{Platform@{Platform}!ObserverUpdate@{ObserverUpdate}}
+\index{ObserverUpdate@{ObserverUpdate}!Platform@{Platform}}
+\doxysubsubsection{\texorpdfstring{ObserverUpdate()}{ObserverUpdate()}}
+{\footnotesize\ttfamily void Platform\+::\+Observer\+Update (\begin{DoxyParamCaption}\item[{Keycode}]{,  }\item[{Event\+Type}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Virtual function that gets called when the \mbox{\hyperlink{class_input_observer}{Input\+Observer}} base class gets notified by a subject. 
+
+
+
+Implements \mbox{\hyperlink{class_game_object_ab0556c79e2fead71003c64b39a9759c2}{Game\+Object}}.
+
+\mbox{\Hypertarget{class_platform_a1c4fbb1ad1c99246c90c0ecf437ed3d0}\label{class_platform_a1c4fbb1ad1c99246c90c0ecf437ed3d0}} 
+\index{Platform@{Platform}!Update@{Update}}
+\index{Update@{Update}!Platform@{Platform}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily void Platform\+::\+Update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Virtual Update Function for game loop to call during its update. 
+
+
+
+Implements \mbox{\hyperlink{class_game_object_a7f5c1336131d246a1e4ec9047996cab8}{Game\+Object}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Orgre\+Template\+V2/Platform.\+h\item 
+Orgre\+Template\+V2/Platform.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,77 @@
+\hypertarget{class_input_observer}{}\doxysection{Input\+Observer Class Reference}
+\label{class_input_observer}\index{InputObserver@{InputObserver}}
+
+
+An observer base class that attaches itself to a subject so that it recieves notices.  
+
+
+
+
+{\ttfamily \#include $<$Input\+Observer.\+h$>$}
+
+Inheritance diagram for Input\+Observer\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_input_observer}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_input_observer_afd8a189e7ae9e20d7d730798c9b37de8}{Attach\+To\+Subject}} (\mbox{\hyperlink{class_input_subject}{Input\+Subject}} \&subject)
+\begin{DoxyCompactList}\small\item\em Attaches itself to an input subject so that it recieves notices from the subject. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_input_observer_a3402dd56d14e628217470fc1dc445090}{Update}} (Keycode, Event\+Type)
+\begin{DoxyCompactList}\small\item\em Non-\/virtual update function that calls the virtual one. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_input_observer_aa7653f7fa16bf40e2d00569252f6d0f1}{Observer\+Update}} (Keycode, Event\+Type)=0
+\begin{DoxyCompactList}\small\item\em Virtual function that gets called when the observer recieves a notice from the subject. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+An observer base class that attaches itself to a subject so that it recieves notices. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_input_observer_afd8a189e7ae9e20d7d730798c9b37de8}\label{class_input_observer_afd8a189e7ae9e20d7d730798c9b37de8}} 
+\index{InputObserver@{InputObserver}!AttachToSubject@{AttachToSubject}}
+\index{AttachToSubject@{AttachToSubject}!InputObserver@{InputObserver}}
+\doxysubsubsection{\texorpdfstring{AttachToSubject()}{AttachToSubject()}}
+{\footnotesize\ttfamily void Input\+Observer\+::\+Attach\+To\+Subject (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_input_subject}{Input\+Subject}} \&}]{subject }\end{DoxyParamCaption})}
+
+
+
+Attaches itself to an input subject so that it recieves notices from the subject. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em subject} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_input_observer_aa7653f7fa16bf40e2d00569252f6d0f1}\label{class_input_observer_aa7653f7fa16bf40e2d00569252f6d0f1}} 
+\index{InputObserver@{InputObserver}!ObserverUpdate@{ObserverUpdate}}
+\index{ObserverUpdate@{ObserverUpdate}!InputObserver@{InputObserver}}
+\doxysubsubsection{\texorpdfstring{ObserverUpdate()}{ObserverUpdate()}}
+{\footnotesize\ttfamily virtual void Input\+Observer\+::\+Observer\+Update (\begin{DoxyParamCaption}\item[{Keycode}]{,  }\item[{Event\+Type}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Virtual function that gets called when the observer recieves a notice from the subject. 
+
+
+
+Implemented in \mbox{\hyperlink{class_game_a42e818b086cff25a35ea1eabfd4f4bf2}{Game}}, \mbox{\hyperlink{class_platform_a14d74d3abcd333b585c4eecf0db66ce4}{Platform}}, \mbox{\hyperlink{class_player_a73a44b2583dce0b5268ef9179b5b5f2b}{Player}}, and \mbox{\hyperlink{class_game_object_ab0556c79e2fead71003c64b39a9759c2}{Game\+Object}}.
+
+\mbox{\Hypertarget{class_input_observer_a3402dd56d14e628217470fc1dc445090}\label{class_input_observer_a3402dd56d14e628217470fc1dc445090}} 
+\index{InputObserver@{InputObserver}!Update@{Update}}
+\index{Update@{Update}!InputObserver@{InputObserver}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily void Input\+Observer\+::\+Update (\begin{DoxyParamCaption}\item[{Keycode}]{keycode,  }\item[{Event\+Type}]{evttype }\end{DoxyParamCaption})}
+
+
+
+Non-\/virtual update function that calls the virtual one. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Orgre\+Template\+V2/Input\+Observer.\+h\item 
+Orgre\+Template\+V2/Input\+Observer.\+cpp\end{DoxyCompactItemize}

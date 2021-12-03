@@ -1,0 +1,32 @@
+\hypertarget{_collision_manager_8h_source}{}\doxysection{Collision\+Manager.\+h}
+\label{_collision_manager_8h_source}\index{OrgreTemplateV2/CollisionManager.h@{OrgreTemplateV2/CollisionManager.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#include "{}GameObject.h"{}}}
+\DoxyCodeLine{3 \textcolor{comment}{// Core Libraries}}
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include "{}Ogre.h"{}}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{6 }
+\DoxyCodeLine{10 \textcolor{keyword}{class }\mbox{\hyperlink{class_collision_manager}{CollisionManager}} }
+\DoxyCodeLine{11 \{}
+\DoxyCodeLine{12 \textcolor{keyword}{public}:}
+\DoxyCodeLine{16     \textcolor{keyword}{enum} \mbox{\hyperlink{class_collision_manager_a512430a5bcf138d2424281538e64ba31}{CollisionType}}}
+\DoxyCodeLine{17     \{}
+\DoxyCodeLine{18         kNull,}
+\DoxyCodeLine{19         kTop,}
+\DoxyCodeLine{20         kBottom,}
+\DoxyCodeLine{21         kLeft,}
+\DoxyCodeLine{22         kRight}
+\DoxyCodeLine{23     \};}
+\DoxyCodeLine{24 }
+\DoxyCodeLine{31     \textcolor{keyword}{static} \mbox{\hyperlink{class_collision_manager_a512430a5bcf138d2424281538e64ba31}{CollisionType}} \mbox{\hyperlink{class_collision_manager_a694474049ef26fe79cb8fc5d2ffcd108}{AABBCheck}}(\mbox{\hyperlink{class_game_object}{GameObject}}* object1, \mbox{\hyperlink{class_game_object}{GameObject}}* object2);}
+\DoxyCodeLine{32 }
+\DoxyCodeLine{39     \textcolor{keyword}{static} \mbox{\hyperlink{class_collision_manager_a512430a5bcf138d2424281538e64ba31}{CollisionType}} \mbox{\hyperlink{class_collision_manager_a6ef5f24375682bd2a7aa10deba082a06}{CameraBoundCheck}}(\mbox{\hyperlink{class_game_object}{GameObject}}* object1, Camera* cam);}
+\DoxyCodeLine{40 }
+\DoxyCodeLine{41 \textcolor{keyword}{private}:}
+\DoxyCodeLine{42     \mbox{\hyperlink{class_collision_manager}{CollisionManager}}();}
+\DoxyCodeLine{43     \mbox{\hyperlink{class_collision_manager}{\string~CollisionManager}}();}
+\DoxyCodeLine{44 \};}
+
+\end{DoxyCode}

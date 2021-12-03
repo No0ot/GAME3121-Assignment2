@@ -1,0 +1,204 @@
+\hypertarget{class_game}{}\doxysection{Game Class Reference}
+\label{class_game}\index{Game@{Game}}
+
+
+\mbox{\hyperlink{class_game}{Game}} class used to build the application and set-\/up the game world  
+
+
+
+
+{\ttfamily \#include $<$Game.\+h$>$}
+
+Inheritance diagram for Game\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_game}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_game_ad59df6562a58a614fda24622d3715b65}{Game}} ()
+\item 
+void \mbox{\hyperlink{class_game_ae4618ba40eabbbe65e35f1bb239aa29b}{setup}} ()
+\begin{DoxyCompactList}\small\item\em Main Setup Function \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_game_a2ba00c3475d222573e5ad54b88b389b7}\label{class_game_a2ba00c3475d222573e5ad54b88b389b7}} 
+bool {\bfseries key\+Pressed} (const Keyboard\+Event \&evt)
+\begin{DoxyCompactList}\small\item\em Input detection function for keydown \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_game_a495b7d5ab243a04b0c5fc5e28c4f73b4}{key\+Released}} (const Keyboard\+Event \&evt)
+\item 
+void \mbox{\hyperlink{class_game_a1df5b2aa5e4bb03bc39fafbf4aa1f943}{Create\+Scene}} ()
+\begin{DoxyCompactList}\small\item\em Calls the other functions that create the main objects in the game \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_a07053ea748396f8a7af5ffa0ac86fc08}{Create\+Camera}} ()
+\begin{DoxyCompactList}\small\item\em Creates the game world camera and binds it to a scenenode \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_adadc9291cf53d2843b146e25052a72a3}{Create\+Frame\+Listener}} ()
+\begin{DoxyCompactList}\small\item\em Creates the custom observer class framelistener \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_a03b7d35d468b04c2bea4e409d7f5e3d6}{Create\+Background}} ()
+\begin{DoxyCompactList}\small\item\em Creates the Background Plane \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_a01749ddd69800dfdfd4bb290c1ea6ae5}{Create\+Lights}} ()
+\begin{DoxyCompactList}\small\item\em Creates all the lights needed for the scene \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_a1b02eea54a972fd8c48d3fedcfd55d04}{Create\+Physics\+Objects}} ()
+\begin{DoxyCompactList}\small\item\em Creates the custom meshes and objects used within the scene \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_ad5329359dfd334128400a082fa3fd2c9}{Create\+UI}} ()
+\begin{DoxyCompactList}\small\item\em Creates the traymanager and the different labels present within the scene \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_ad61ea3e9ad3e02e5e4a5430a2a1d6023}{Update\+UI}} (const Ogre\+::\+Frame\+Event \&evt)
+\begin{DoxyCompactList}\small\item\em A function to update the UI \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_a42e818b086cff25a35ea1eabfd4f4bf2}{Observer\+Update}} (Keycode, Event\+Type) override
+\begin{DoxyCompactList}\small\item\em Virtual function that gets called when the observer recieves a notice from the subject. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_game_a328cb7a87bb463296a7935b2bcc2008b}\label{class_game_a328cb7a87bb463296a7935b2bcc2008b}} 
+bool {\bfseries keep\+Running} ()
+\item 
+\mbox{\Hypertarget{class_game_a30ec405b5abb9a1d3de6e5a433aaa6a2}\label{class_game_a30ec405b5abb9a1d3de6e5a433aaa6a2}} 
+void {\bfseries Game\+Loop\+Update} ()
+\item 
+\mbox{\Hypertarget{class_game_a385d7b4191a6f3e83b06722de708042d}\label{class_game_a385d7b4191a6f3e83b06722de708042d}} 
+void {\bfseries Game\+Logic\+Check} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_game_a5daeac805c5af164e8615c209b4d3e3b}\label{class_game_a5daeac805c5af164e8615c209b4d3e3b}} 
+\mbox{\hyperlink{class_input_manager}{Input\+Manager}} $\ast$ {\bfseries m\+Input\+Manager}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\mbox{\hyperlink{class_game}{Game}} class used to build the application and set-\/up the game world 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_game_ad59df6562a58a614fda24622d3715b65}\label{class_game_ad59df6562a58a614fda24622d3715b65}} 
+\index{Game@{Game}!Game@{Game}}
+\index{Game@{Game}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{Game()}{Game()}}
+{\footnotesize\ttfamily Game\+::\+Game (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\hyperlink{class_game}{Game}} class Constructor 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_game_a03b7d35d468b04c2bea4e409d7f5e3d6}\label{class_game_a03b7d35d468b04c2bea4e409d7f5e3d6}} 
+\index{Game@{Game}!CreateBackground@{CreateBackground}}
+\index{CreateBackground@{CreateBackground}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{CreateBackground()}{CreateBackground()}}
+{\footnotesize\ttfamily void Game\+::\+Create\+Background (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Creates the Background Plane 
+
+Creates the Background Plane creates a plane for the background and binds a texture to the material \mbox{\Hypertarget{class_game_a07053ea748396f8a7af5ffa0ac86fc08}\label{class_game_a07053ea748396f8a7af5ffa0ac86fc08}} 
+\index{Game@{Game}!CreateCamera@{CreateCamera}}
+\index{CreateCamera@{CreateCamera}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{CreateCamera()}{CreateCamera()}}
+{\footnotesize\ttfamily void Game\+::\+Create\+Camera (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Creates the game world camera and binds it to a scenenode 
+
+Create Camera Function\+: Creates the game world camera and binds it to a scenenode \mbox{\Hypertarget{class_game_adadc9291cf53d2843b146e25052a72a3}\label{class_game_adadc9291cf53d2843b146e25052a72a3}} 
+\index{Game@{Game}!CreateFrameListener@{CreateFrameListener}}
+\index{CreateFrameListener@{CreateFrameListener}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{CreateFrameListener()}{CreateFrameListener()}}
+{\footnotesize\ttfamily void Game\+::\+Create\+Frame\+Listener (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Creates the custom observer class framelistener 
+
+Creates the custom observer class framelistener \+: Creates the custom \mbox{\hyperlink{class_physics_frame_listener}{Physics\+Frame\+Listener}} while passing in a vector of all the physics objects along with a refrence to the game instance \mbox{\Hypertarget{class_game_a01749ddd69800dfdfd4bb290c1ea6ae5}\label{class_game_a01749ddd69800dfdfd4bb290c1ea6ae5}} 
+\index{Game@{Game}!CreateLights@{CreateLights}}
+\index{CreateLights@{CreateLights}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{CreateLights()}{CreateLights()}}
+{\footnotesize\ttfamily void Game\+::\+Create\+Lights (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Creates all the lights needed for the scene 
+
+Create Lights Function \+: Creates all the lights needed for the scene \mbox{\Hypertarget{class_game_a1b02eea54a972fd8c48d3fedcfd55d04}\label{class_game_a1b02eea54a972fd8c48d3fedcfd55d04}} 
+\index{Game@{Game}!CreatePhysicsObjects@{CreatePhysicsObjects}}
+\index{CreatePhysicsObjects@{CreatePhysicsObjects}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{CreatePhysicsObjects()}{CreatePhysicsObjects()}}
+{\footnotesize\ttfamily void Game\+::\+Create\+Physics\+Objects (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Creates the custom meshes and objects used within the scene 
+
+Create Physics Objects function\+: Creates the custom meshes and objects used within the scene \mbox{\Hypertarget{class_game_a1df5b2aa5e4bb03bc39fafbf4aa1f943}\label{class_game_a1df5b2aa5e4bb03bc39fafbf4aa1f943}} 
+\index{Game@{Game}!CreateScene@{CreateScene}}
+\index{CreateScene@{CreateScene}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{CreateScene()}{CreateScene()}}
+{\footnotesize\ttfamily void Game\+::\+Create\+Scene (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Calls the other functions that create the main objects in the game 
+
+Create Scene Function Calls the other functions that create the main objects in the game \mbox{\Hypertarget{class_game_ad5329359dfd334128400a082fa3fd2c9}\label{class_game_ad5329359dfd334128400a082fa3fd2c9}} 
+\index{Game@{Game}!CreateUI@{CreateUI}}
+\index{CreateUI@{CreateUI}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{CreateUI()}{CreateUI()}}
+{\footnotesize\ttfamily void Game\+::\+Create\+UI (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Creates the traymanager and the different labels present within the scene 
+
+Creates the UI\+: Creates the traymanager and the different labels present within the scene \mbox{\Hypertarget{class_game_a495b7d5ab243a04b0c5fc5e28c4f73b4}\label{class_game_a495b7d5ab243a04b0c5fc5e28c4f73b4}} 
+\index{Game@{Game}!keyReleased@{keyReleased}}
+\index{keyReleased@{keyReleased}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{keyReleased()}{keyReleased()}}
+{\footnotesize\ttfamily bool Game\+::key\+Released (\begin{DoxyParamCaption}\item[{const Keyboard\+Event \&}]{evt }\end{DoxyParamCaption})}
+
+
+
+
+
+Input detection for Keyup \mbox{\Hypertarget{class_game_a42e818b086cff25a35ea1eabfd4f4bf2}\label{class_game_a42e818b086cff25a35ea1eabfd4f4bf2}} 
+\index{Game@{Game}!ObserverUpdate@{ObserverUpdate}}
+\index{ObserverUpdate@{ObserverUpdate}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{ObserverUpdate()}{ObserverUpdate()}}
+{\footnotesize\ttfamily void Game\+::\+Observer\+Update (\begin{DoxyParamCaption}\item[{Keycode}]{,  }\item[{Event\+Type}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Virtual function that gets called when the observer recieves a notice from the subject. 
+
+
+
+Implements \mbox{\hyperlink{class_input_observer_aa7653f7fa16bf40e2d00569252f6d0f1}{Input\+Observer}}.
+
+\mbox{\Hypertarget{class_game_ae4618ba40eabbbe65e35f1bb239aa29b}\label{class_game_ae4618ba40eabbbe65e35f1bb239aa29b}} 
+\index{Game@{Game}!setup@{setup}}
+\index{setup@{setup}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{setup()}{setup()}}
+{\footnotesize\ttfamily void Game\+::setup (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Main Setup Function 
+
+Main setup function calls the super setup function as well as gets references to the root and Scene\+Manager \mbox{\Hypertarget{class_game_ad61ea3e9ad3e02e5e4a5430a2a1d6023}\label{class_game_ad61ea3e9ad3e02e5e4a5430a2a1d6023}} 
+\index{Game@{Game}!UpdateUI@{UpdateUI}}
+\index{UpdateUI@{UpdateUI}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{UpdateUI()}{UpdateUI()}}
+{\footnotesize\ttfamily void Game\+::\+Update\+UI (\begin{DoxyParamCaption}\item[{const Ogre\+::\+Frame\+Event \&}]{evt }\end{DoxyParamCaption})}
+
+
+
+A function to update the UI 
+
+
+\begin{DoxyParams}{Parameters}
+{\em evt} & \\
+\hline
+\end{DoxyParams}
+
+
+A function to update the UI this function updates the various UI elements per frame. It is used within the physics frame listener 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Orgre\+Template\+V2/Game.\+h\item 
+Orgre\+Template\+V2/Game.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,93 @@
+\hypertarget{class_input_manager}{}\doxysection{Input\+Manager Class Reference}
+\label{class_input_manager}\index{InputManager@{InputManager}}
+
+
+Manager class to manage the observer pattern used for the inputs.\+Its derived from the Ogre Input\+Listener to catch inputs.  
+
+
+
+
+{\ttfamily \#include $<$Input\+Manager.\+h$>$}
+
+Inheritance diagram for Input\+Manager\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_input_manager}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{class_input_manager_a5d1712acf10a738c68f52353af30dde8}{key\+Pressed}} (const Keyboard\+Event \&evt)
+\begin{DoxyCompactList}\small\item\em Ogre\+::\+Input\+Listener key\+Pressed function for catching keypressed events. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_input_manager_a67919e39f66a51ccf7adb7e0556a6ed4}{key\+Released}} (const Keyboard\+Event \&evt)
+\begin{DoxyCompactList}\small\item\em Ogre\+::\+Input\+Listener key\+Releasedfunction for catching key up events. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_input_manager_ab9f4c9a877a1302f717aab96e0b9639e}\label{class_input_manager_ab9f4c9a877a1302f717aab96e0b9639e}} 
+void {\bfseries Populate\+Key\+Down\+List} ()
+\begin{DoxyCompactList}\small\item\em Populates the keydown subjects list with possible keydown events. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_input_manager_a2a997fe28e5e32da0f5b5eef22ebdd67}\label{class_input_manager_a2a997fe28e5e32da0f5b5eef22ebdd67}} 
+void {\bfseries Populate\+Key\+Up\+List} ()
+\begin{DoxyCompactList}\small\item\em Populates the keyup subjects list with possible keyup events. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_input_subject}{Input\+Subject}} $\ast$ \mbox{\hyperlink{class_input_manager_aad78b9b80154f73fbb29d6eaf97ced23}{Get\+Input\+Subject}} (Keycode, Event\+Type)
+\begin{DoxyCompactList}\small\item\em Returns a subject object from one of the lists depending on the passed in keycode and eventtype. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Manager class to manage the observer pattern used for the inputs.\+Its derived from the Ogre Input\+Listener to catch inputs. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_input_manager_aad78b9b80154f73fbb29d6eaf97ced23}\label{class_input_manager_aad78b9b80154f73fbb29d6eaf97ced23}} 
+\index{InputManager@{InputManager}!GetInputSubject@{GetInputSubject}}
+\index{GetInputSubject@{GetInputSubject}!InputManager@{InputManager}}
+\doxysubsubsection{\texorpdfstring{GetInputSubject()}{GetInputSubject()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_input_subject}{Input\+Subject}} $\ast$ Input\+Manager\+::\+Get\+Input\+Subject (\begin{DoxyParamCaption}\item[{Keycode}]{keycode,  }\item[{Event\+Type}]{evtype }\end{DoxyParamCaption})}
+
+
+
+Returns a subject object from one of the lists depending on the passed in keycode and eventtype. 
+
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_input_manager_a5d1712acf10a738c68f52353af30dde8}\label{class_input_manager_a5d1712acf10a738c68f52353af30dde8}} 
+\index{InputManager@{InputManager}!keyPressed@{keyPressed}}
+\index{keyPressed@{keyPressed}!InputManager@{InputManager}}
+\doxysubsubsection{\texorpdfstring{keyPressed()}{keyPressed()}}
+{\footnotesize\ttfamily bool Input\+Manager\+::key\+Pressed (\begin{DoxyParamCaption}\item[{const Keyboard\+Event \&}]{evt }\end{DoxyParamCaption})}
+
+
+
+Ogre\+::\+Input\+Listener key\+Pressed function for catching keypressed events. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em evt} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_input_manager_a67919e39f66a51ccf7adb7e0556a6ed4}\label{class_input_manager_a67919e39f66a51ccf7adb7e0556a6ed4}} 
+\index{InputManager@{InputManager}!keyReleased@{keyReleased}}
+\index{keyReleased@{keyReleased}!InputManager@{InputManager}}
+\doxysubsubsection{\texorpdfstring{keyReleased()}{keyReleased()}}
+{\footnotesize\ttfamily bool Input\+Manager\+::key\+Released (\begin{DoxyParamCaption}\item[{const Keyboard\+Event \&}]{evt }\end{DoxyParamCaption})}
+
+
+
+Ogre\+::\+Input\+Listener key\+Releasedfunction for catching key up events. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em evt} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Orgre\+Template\+V2/Input\+Manager.\+h\item 
+Orgre\+Template\+V2/Input\+Manager.\+cpp\end{DoxyCompactItemize}

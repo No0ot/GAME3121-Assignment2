@@ -1,0 +1,34 @@
+\hypertarget{_input_manager_8h_source}{}\doxysection{Input\+Manager.\+h}
+\label{_input_manager_8h_source}\index{OrgreTemplateV2/InputManager.h@{OrgreTemplateV2/InputManager.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#include "{}Ogre.h"{}}}
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include "{}OgreApplicationContext.h"{}}}
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include "{}OgreInput.h"{}}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include "{}OgreRTShaderSystem.h"{}}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include "{}OgreTrays.h"{}}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include <list>}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#include "{}InputSubject.h"{}}}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{11 \textcolor{keyword}{using namespace }Ogre;}
+\DoxyCodeLine{12 \textcolor{keyword}{using namespace }OgreBites;}
+\DoxyCodeLine{16 \textcolor{keyword}{class }\mbox{\hyperlink{class_input_manager}{InputManager}} : \textcolor{keyword}{public} InputListener}
+\DoxyCodeLine{17 \{}
+\DoxyCodeLine{18 \textcolor{keyword}{public}:}
+\DoxyCodeLine{19     \mbox{\hyperlink{class_input_manager}{InputManager}}();}
+\DoxyCodeLine{20     \mbox{\hyperlink{class_input_manager}{\string~InputManager}}();}
+\DoxyCodeLine{26     \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_input_manager_a5d1712acf10a738c68f52353af30dde8}{keyPressed}}(\textcolor{keyword}{const} KeyboardEvent\& evt);}
+\DoxyCodeLine{32     \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_input_manager_a67919e39f66a51ccf7adb7e0556a6ed4}{keyReleased}}(\textcolor{keyword}{const} KeyboardEvent\& evt);}
+\DoxyCodeLine{36     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_input_manager_ab9f4c9a877a1302f717aab96e0b9639e}{PopulateKeyDownList}}();}
+\DoxyCodeLine{40     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_input_manager_a2a997fe28e5e32da0f5b5eef22ebdd67}{PopulateKeyUpList}}();}
+\DoxyCodeLine{47     \mbox{\hyperlink{class_input_subject}{InputSubject}}* \mbox{\hyperlink{class_input_manager_aad78b9b80154f73fbb29d6eaf97ced23}{GetInputSubject}}(Keycode, EventType);}
+\DoxyCodeLine{48 }
+\DoxyCodeLine{49 \textcolor{keyword}{private}:}
+\DoxyCodeLine{50     std::list<InputSubject*> mKeyDownSubjects; }
+\DoxyCodeLine{51     std::list<InputSubject*> mKeyUpSubjects; }
+\DoxyCodeLine{53 \};}
+\DoxyCodeLine{54 }
+
+\end{DoxyCode}

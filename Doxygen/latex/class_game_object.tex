@@ -1,0 +1,149 @@
+\hypertarget{class_game_object}{}\doxysection{Game\+Object Class Reference}
+\label{class_game_object}\index{GameObject@{GameObject}}
+
+
+Base \mbox{\hyperlink{class_game_object}{Game\+Object}} class. Inherits from \mbox{\hyperlink{class_input_observer}{Input\+Observer}} so that any object can respond to Inputs.  
+
+
+
+
+{\ttfamily \#include $<$Game\+Object.\+h$>$}
+
+Inheritance diagram for Game\+Object\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_game_object}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_game_object_ab9631c3e3770d02fc76dcb91f07e52e4}\label{class_game_object_ab9631c3e3770d02fc76dcb91f07e52e4}} 
+{\bfseries Game\+Object} (\mbox{\hyperlink{class_game}{Game}} $\ast$game\+Instance, Scene\+Manager $\ast$scnmngr, std\+::string name)
+\item 
+virtual void \mbox{\hyperlink{class_game_object_a7f5c1336131d246a1e4ec9047996cab8}{Update}} ()=0
+\begin{DoxyCompactList}\small\item\em Virtual Update Function for game loop to call during its update. \end{DoxyCompactList}\item 
+Ogre\+::\+Scene\+Node $\ast$ \mbox{\hyperlink{class_game_object_aa71e20601918e75d34eba11a5fbf6545}{Get\+Node}} ()
+\begin{DoxyCompactList}\small\item\em Returns the pointer to the attached Node. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_object_a0dd6aa0d7becc86f5e0bac90e5190948}{Set\+Node}} (Ogre\+::\+Scene\+Node $\ast$newnode)
+\begin{DoxyCompactList}\small\item\em Sets the node in case you need to switch the node of an object. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_game_object_ab0556c79e2fead71003c64b39a9759c2}{Observer\+Update}} (Keycode, Event\+Type)=0
+\begin{DoxyCompactList}\small\item\em Virtual function that gets called when the \mbox{\hyperlink{class_input_observer}{Input\+Observer}} base class gets notified by a subject. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_game}{Game}} $\ast$ \mbox{\hyperlink{class_game_object_ad6648935110cb34902130838a4ea6dbe}{m\+Game\+Reference}}
+\item 
+Ogre\+::\+Scene\+Node $\ast$ \mbox{\hyperlink{class_game_object_a069c2ab5bcd93e12fe7f3a73e1f095aa}{node}}
+\item 
+Ogre\+::\+Manual\+Object $\ast$ \mbox{\hyperlink{class_game_object_a0de18c7bdc2d5b875bde19ca05b5c663}{mesh}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Base \mbox{\hyperlink{class_game_object}{Game\+Object}} class. Inherits from \mbox{\hyperlink{class_input_observer}{Input\+Observer}} so that any object can respond to Inputs. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_game_object_aa71e20601918e75d34eba11a5fbf6545}\label{class_game_object_aa71e20601918e75d34eba11a5fbf6545}} 
+\index{GameObject@{GameObject}!GetNode@{GetNode}}
+\index{GetNode@{GetNode}!GameObject@{GameObject}}
+\doxysubsubsection{\texorpdfstring{GetNode()}{GetNode()}}
+{\footnotesize\ttfamily Ogre\+::\+Scene\+Node $\ast$ Game\+Object\+::\+Get\+Node (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Returns the pointer to the attached Node. 
+
+Returns a reference to the attached Manual object(mesh) 
+
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+\begin{DoxyReturn}{Returns}
+Returns mesh member 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_game_object_ab0556c79e2fead71003c64b39a9759c2}\label{class_game_object_ab0556c79e2fead71003c64b39a9759c2}} 
+\index{GameObject@{GameObject}!ObserverUpdate@{ObserverUpdate}}
+\index{ObserverUpdate@{ObserverUpdate}!GameObject@{GameObject}}
+\doxysubsubsection{\texorpdfstring{ObserverUpdate()}{ObserverUpdate()}}
+{\footnotesize\ttfamily virtual void Game\+Object\+::\+Observer\+Update (\begin{DoxyParamCaption}\item[{Keycode}]{,  }\item[{Event\+Type}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Virtual function that gets called when the \mbox{\hyperlink{class_input_observer}{Input\+Observer}} base class gets notified by a subject. 
+
+
+
+Implements \mbox{\hyperlink{class_input_observer_aa7653f7fa16bf40e2d00569252f6d0f1}{Input\+Observer}}.
+
+
+
+Implemented in \mbox{\hyperlink{class_platform_a14d74d3abcd333b585c4eecf0db66ce4}{Platform}}, and \mbox{\hyperlink{class_player_a73a44b2583dce0b5268ef9179b5b5f2b}{Player}}.
+
+\mbox{\Hypertarget{class_game_object_a0dd6aa0d7becc86f5e0bac90e5190948}\label{class_game_object_a0dd6aa0d7becc86f5e0bac90e5190948}} 
+\index{GameObject@{GameObject}!SetNode@{SetNode}}
+\index{SetNode@{SetNode}!GameObject@{GameObject}}
+\doxysubsubsection{\texorpdfstring{SetNode()}{SetNode()}}
+{\footnotesize\ttfamily void Game\+Object\+::\+Set\+Node (\begin{DoxyParamCaption}\item[{Ogre\+::\+Scene\+Node $\ast$}]{newnode }\end{DoxyParamCaption})}
+
+
+
+Sets the node in case you need to switch the node of an object. 
+
+Sets the reference to a Scene\+Node 
+
+
+\begin{DoxyParams}{Parameters}
+{\em newnode} & \\
+\hline
+\end{DoxyParams}
+
+
+
+\begin{DoxyParams}{Parameters}
+{\em newnode} & Reference to the Scene\+Node to be attached\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_game_object_a7f5c1336131d246a1e4ec9047996cab8}\label{class_game_object_a7f5c1336131d246a1e4ec9047996cab8}} 
+\index{GameObject@{GameObject}!Update@{Update}}
+\index{Update@{Update}!GameObject@{GameObject}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily virtual void Game\+Object\+::\+Update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Virtual Update Function for game loop to call during its update. 
+
+
+
+Implemented in \mbox{\hyperlink{class_platform_a1c4fbb1ad1c99246c90c0ecf437ed3d0}{Platform}}, and \mbox{\hyperlink{class_player_a5e17be3418fa0ac0192c05efaf3dc8bd}{Player}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_game_object_a0de18c7bdc2d5b875bde19ca05b5c663}\label{class_game_object_a0de18c7bdc2d5b875bde19ca05b5c663}} 
+\index{GameObject@{GameObject}!mesh@{mesh}}
+\index{mesh@{mesh}!GameObject@{GameObject}}
+\doxysubsubsection{\texorpdfstring{mesh}{mesh}}
+{\footnotesize\ttfamily Ogre\+::\+Manual\+Object$\ast$ Game\+Object\+::mesh\hspace{0.3cm}{\ttfamily [protected]}}
+
+Pointer to the Mesh object attached to the node. \mbox{\Hypertarget{class_game_object_ad6648935110cb34902130838a4ea6dbe}\label{class_game_object_ad6648935110cb34902130838a4ea6dbe}} 
+\index{GameObject@{GameObject}!mGameReference@{mGameReference}}
+\index{mGameReference@{mGameReference}!GameObject@{GameObject}}
+\doxysubsubsection{\texorpdfstring{mGameReference}{mGameReference}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_game}{Game}}$\ast$ Game\+Object\+::m\+Game\+Reference\hspace{0.3cm}{\ttfamily [protected]}}
+
+Pointer reference to the \mbox{\hyperlink{class_game}{Game}} instance. \mbox{\Hypertarget{class_game_object_a069c2ab5bcd93e12fe7f3a73e1f095aa}\label{class_game_object_a069c2ab5bcd93e12fe7f3a73e1f095aa}} 
+\index{GameObject@{GameObject}!node@{node}}
+\index{node@{node}!GameObject@{GameObject}}
+\doxysubsubsection{\texorpdfstring{node}{node}}
+{\footnotesize\ttfamily Ogre\+::\+Scene\+Node$\ast$ Game\+Object\+::node\hspace{0.3cm}{\ttfamily [protected]}}
+
+Pointer to the scene\+Node. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Orgre\+Template\+V2/Game\+Object.\+h\item 
+Orgre\+Template\+V2/Game\+Object.\+cpp\end{DoxyCompactItemize}

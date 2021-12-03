@@ -1,0 +1,30 @@
+\hypertarget{_player_8h_source}{}\doxysection{Player.\+h}
+\label{_player_8h_source}\index{OrgreTemplateV2/Player.h@{OrgreTemplateV2/Player.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#include "{}GameObject.h"{}}}
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include "{}PhysicsObject.h"{}}}
+\DoxyCodeLine{4 }
+\DoxyCodeLine{8 \textcolor{keyword}{class }\mbox{\hyperlink{class_player}{Player}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_game_object}{GameObject}}, \textcolor{keyword}{public} \mbox{\hyperlink{class_physics_object}{PhysicsObject}}}
+\DoxyCodeLine{9 \{}
+\DoxyCodeLine{10 \textcolor{keyword}{public}:}
+\DoxyCodeLine{11     \mbox{\hyperlink{class_player}{Player}}(\mbox{\hyperlink{class_game}{Game}}* gameInstance, SceneManager* scnmngr, std::string name);}
+\DoxyCodeLine{12     \mbox{\hyperlink{class_player}{\string~Player}}();}
+\DoxyCodeLine{13 }
+\DoxyCodeLine{14     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_player_a73a44b2583dce0b5268ef9179b5b5f2b}{ObserverUpdate}}(Keycode, EventType) \textcolor{keyword}{override};}
+\DoxyCodeLine{15     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_player_a5e17be3418fa0ac0192c05efaf3dc8bd}{Update}}() \textcolor{keyword}{override};}
+\DoxyCodeLine{16 }
+\DoxyCodeLine{20     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_player_a293928813a78d52f5d510e0eccca89c8}{DoJump}}();}
+\DoxyCodeLine{21 }
+\DoxyCodeLine{22 \textcolor{keyword}{private}:}
+\DoxyCodeLine{23     \textcolor{keywordtype}{bool} moveDown; }
+\DoxyCodeLine{24     \textcolor{keywordtype}{bool} moveUp; }
+\DoxyCodeLine{25     \textcolor{keywordtype}{bool} moveLeft; }
+\DoxyCodeLine{26     \textcolor{keywordtype}{bool} moveRight; }
+\DoxyCodeLine{27     \textcolor{keywordtype}{float} speed\_; }
+\DoxyCodeLine{28     \textcolor{keywordtype}{float} jump\_force\_; }
+\DoxyCodeLine{29     \textcolor{keywordtype}{float} fall\_multiplier\_; }
+\DoxyCodeLine{30 \};}
+
+\end{DoxyCode}

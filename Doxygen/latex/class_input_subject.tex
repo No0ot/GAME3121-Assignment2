@@ -1,0 +1,97 @@
+\hypertarget{class_input_subject}{}\doxysection{Input\+Subject Class Reference}
+\label{class_input_subject}\index{InputSubject@{InputSubject}}
+
+
+Subject class for the input manager that uses an observer pattern.  
+
+
+
+
+{\ttfamily \#include $<$Input\+Subject.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_input_subject_a5507292d51eaa9c4a4156511793580ef}\label{class_input_subject_a5507292d51eaa9c4a4156511793580ef}} 
+{\bfseries Input\+Subject} (Keycode evt, Event\+Type evttype)
+\item 
+void \mbox{\hyperlink{class_input_subject_a294e6e62c20f6917fdc072280b442fcf}{Attach}} (\mbox{\hyperlink{class_input_observer}{Input\+Observer}} $\ast$observer)
+\begin{DoxyCompactList}\small\item\em Attaches an observer to this subject to open it up to notifys. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_input_subject_a971fafa5eb64c25c59cf4390974de991}{Detach}} (\mbox{\hyperlink{class_input_observer}{Input\+Observer}} $\ast$observer)
+\begin{DoxyCompactList}\small\item\em Removes an observer from the list \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_input_subject_a8ee8e4db7aea1e38477b823ebce38177}{Notify}} (Keycode, Event\+Type)
+\begin{DoxyCompactList}\small\item\em Calls an update on all the observers in the list. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Keycode \mbox{\hyperlink{class_input_subject_ab1b8220a251e988740c4e56dca97e35b}{m\+Keyboard\+Event}}
+\item 
+Event\+Type \mbox{\hyperlink{class_input_subject_a22d49d735dffa45dfab1d39237a32b8c}{m\+Event\+Type}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Subject class for the input manager that uses an observer pattern. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_input_subject_a294e6e62c20f6917fdc072280b442fcf}\label{class_input_subject_a294e6e62c20f6917fdc072280b442fcf}} 
+\index{InputSubject@{InputSubject}!Attach@{Attach}}
+\index{Attach@{Attach}!InputSubject@{InputSubject}}
+\doxysubsubsection{\texorpdfstring{Attach()}{Attach()}}
+{\footnotesize\ttfamily void Input\+Subject\+::\+Attach (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_input_observer}{Input\+Observer}} $\ast$}]{observer }\end{DoxyParamCaption})}
+
+
+
+Attaches an observer to this subject to open it up to notifys. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em observer} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_input_subject_a971fafa5eb64c25c59cf4390974de991}\label{class_input_subject_a971fafa5eb64c25c59cf4390974de991}} 
+\index{InputSubject@{InputSubject}!Detach@{Detach}}
+\index{Detach@{Detach}!InputSubject@{InputSubject}}
+\doxysubsubsection{\texorpdfstring{Detach()}{Detach()}}
+{\footnotesize\ttfamily void Input\+Subject\+::\+Detach (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_input_observer}{Input\+Observer}} $\ast$}]{observer }\end{DoxyParamCaption})}
+
+
+
+Removes an observer from the list 
+
+
+\begin{DoxyParams}{Parameters}
+{\em observer} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_input_subject_a8ee8e4db7aea1e38477b823ebce38177}\label{class_input_subject_a8ee8e4db7aea1e38477b823ebce38177}} 
+\index{InputSubject@{InputSubject}!Notify@{Notify}}
+\index{Notify@{Notify}!InputSubject@{InputSubject}}
+\doxysubsubsection{\texorpdfstring{Notify()}{Notify()}}
+{\footnotesize\ttfamily void Input\+Subject\+::\+Notify (\begin{DoxyParamCaption}\item[{Keycode}]{keycode,  }\item[{Event\+Type}]{evttype }\end{DoxyParamCaption})}
+
+
+
+Calls an update on all the observers in the list. 
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_input_subject_a22d49d735dffa45dfab1d39237a32b8c}\label{class_input_subject_a22d49d735dffa45dfab1d39237a32b8c}} 
+\index{InputSubject@{InputSubject}!mEventType@{mEventType}}
+\index{mEventType@{mEventType}!InputSubject@{InputSubject}}
+\doxysubsubsection{\texorpdfstring{mEventType}{mEventType}}
+{\footnotesize\ttfamily Event\+Type Input\+Subject\+::m\+Event\+Type}
+
+The event tied to this subject whether its key\+UP or key\+Down. \mbox{\Hypertarget{class_input_subject_ab1b8220a251e988740c4e56dca97e35b}\label{class_input_subject_ab1b8220a251e988740c4e56dca97e35b}} 
+\index{InputSubject@{InputSubject}!mKeyboardEvent@{mKeyboardEvent}}
+\index{mKeyboardEvent@{mKeyboardEvent}!InputSubject@{InputSubject}}
+\doxysubsubsection{\texorpdfstring{mKeyboardEvent}{mKeyboardEvent}}
+{\footnotesize\ttfamily Keycode Input\+Subject\+::m\+Keyboard\+Event}
+
+the SDLK keycode or key that this subject represents. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Orgre\+Template\+V2/Input\+Subject.\+h\item 
+Orgre\+Template\+V2/Input\+Subject.\+cpp\end{DoxyCompactItemize}

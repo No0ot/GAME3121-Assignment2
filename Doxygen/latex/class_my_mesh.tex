@@ -1,0 +1,71 @@
+\hypertarget{class_my_mesh}{}\doxysection{My\+Mesh Class Reference}
+\label{class_my_mesh}\index{MyMesh@{MyMesh}}
+
+
+{\ttfamily \#include $<$Mesh.\+h$>$}
+
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static Ogre\+::\+Manual\+Object $\ast$ \mbox{\hyperlink{class_my_mesh_a8557a540c7560defbcf1f418d1384e13}{create\+Cube\+Mesh}} (Ogre\+::\+String name, Ogre\+::\+String mat\+Name, Ogre\+::\+Vector3 clr)
+\begin{DoxyCompactList}\small\item\em Creates a cube Mesh \end{DoxyCompactList}\item 
+static Ogre\+::\+Manual\+Object $\ast$ \mbox{\hyperlink{class_my_mesh_ab2f707bb9a93bca359b539209f4abdab}{create\+Sphere\+Mesh}} (Ogre\+::\+String name, Ogre\+::\+String mat\+Name, const float r, Ogre\+::\+Vector3 clr)
+\begin{DoxyCompactList}\small\item\em Creates a sphere Mesh \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+class containing static functions to build manual Objects to be used as meshes 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_my_mesh_a8557a540c7560defbcf1f418d1384e13}\label{class_my_mesh_a8557a540c7560defbcf1f418d1384e13}} 
+\index{MyMesh@{MyMesh}!createCubeMesh@{createCubeMesh}}
+\index{createCubeMesh@{createCubeMesh}!MyMesh@{MyMesh}}
+\doxysubsubsection{\texorpdfstring{createCubeMesh()}{createCubeMesh()}}
+{\footnotesize\ttfamily Ogre\+::\+Manual\+Object $\ast$ My\+Mesh\+::create\+Cube\+Mesh (\begin{DoxyParamCaption}\item[{Ogre\+::\+String}]{name,  }\item[{Ogre\+::\+String}]{mat\+Name,  }\item[{Ogre\+::\+Vector3}]{clr }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Creates a cube Mesh 
+
+Creats and returns a manual object to be used as the cube mesh
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & Name id for the manual object\\
+\hline
+{\em mat\+Name} & The name of the material to be used\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns the cube shaped manual object
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_my_mesh_ab2f707bb9a93bca359b539209f4abdab}\label{class_my_mesh_ab2f707bb9a93bca359b539209f4abdab}} 
+\index{MyMesh@{MyMesh}!createSphereMesh@{createSphereMesh}}
+\index{createSphereMesh@{createSphereMesh}!MyMesh@{MyMesh}}
+\doxysubsubsection{\texorpdfstring{createSphereMesh()}{createSphereMesh()}}
+{\footnotesize\ttfamily Ogre\+::\+Manual\+Object $\ast$ My\+Mesh\+::create\+Sphere\+Mesh (\begin{DoxyParamCaption}\item[{Ogre\+::\+String}]{name,  }\item[{Ogre\+::\+String}]{mat\+Name,  }\item[{const float}]{r,  }\item[{Ogre\+::\+Vector3}]{clr }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Creates a sphere Mesh 
+
+Creats and returns a manual object to be used as the sphere mesh
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & Name id for the manual object\\
+\hline
+{\em mat\+Name} & The name of the material to be used\\
+\hline
+{\em r} & radius of the sphere\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns the sphere shaped manual object
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Orgre\+Template\+V2/Mesh.\+h\item 
+Orgre\+Template\+V2/Mesh.\+cpp\end{DoxyCompactItemize}

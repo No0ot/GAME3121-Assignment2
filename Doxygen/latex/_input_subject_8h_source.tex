@@ -1,0 +1,29 @@
+\hypertarget{_input_subject_8h_source}{}\doxysection{Input\+Subject.\+h}
+\label{_input_subject_8h_source}\index{OrgreTemplateV2/InputSubject.h@{OrgreTemplateV2/InputSubject.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#include <list>}}
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include "{}OgreTrays.h"{}}}
+\DoxyCodeLine{6 }
+\DoxyCodeLine{7 \textcolor{keyword}{using namespace }Ogre;}
+\DoxyCodeLine{8 \textcolor{keyword}{using namespace }OgreBites;}
+\DoxyCodeLine{9 \textcolor{keyword}{class }\mbox{\hyperlink{class_input_observer}{InputObserver}};}
+\DoxyCodeLine{13 \textcolor{keyword}{class }\mbox{\hyperlink{class_input_subject}{InputSubject}}}
+\DoxyCodeLine{14 \{}
+\DoxyCodeLine{15 \textcolor{keyword}{public}:}
+\DoxyCodeLine{16     \mbox{\hyperlink{class_input_subject}{InputSubject}}(Keycode evt, EventType evttype);}
+\DoxyCodeLine{17     \mbox{\hyperlink{class_input_subject}{\string~InputSubject}}();}
+\DoxyCodeLine{22     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_input_subject_a294e6e62c20f6917fdc072280b442fcf}{Attach}}(\mbox{\hyperlink{class_input_observer}{InputObserver}}* observer);}
+\DoxyCodeLine{27     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_input_subject_a971fafa5eb64c25c59cf4390974de991}{Detach}}(\mbox{\hyperlink{class_input_observer}{InputObserver}}* observer);}
+\DoxyCodeLine{33     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_input_subject_a8ee8e4db7aea1e38477b823ebce38177}{Notify}}(Keycode, EventType);}
+\DoxyCodeLine{34     Keycode \mbox{\hyperlink{class_input_subject_ab1b8220a251e988740c4e56dca97e35b}{mKeyboardEvent}};}
+\DoxyCodeLine{35     EventType \mbox{\hyperlink{class_input_subject_a22d49d735dffa45dfab1d39237a32b8c}{mEventType}};}
+\DoxyCodeLine{36 \textcolor{keyword}{private}:}
+\DoxyCodeLine{37     std::list<InputObserver*> mObservers; }
+\DoxyCodeLine{38 \};}
+\DoxyCodeLine{39 }
+
+\end{DoxyCode}

@@ -1,0 +1,20 @@
+\hypertarget{_platform_8h_source}{}\doxysection{Platform.\+h}
+\label{_platform_8h_source}\index{OrgreTemplateV2/Platform.h@{OrgreTemplateV2/Platform.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#include "{}GameObject.h"{}}}
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include "{}PhysicsObject.h"{}}}
+\DoxyCodeLine{4 }
+\DoxyCodeLine{8 \textcolor{keyword}{class }\mbox{\hyperlink{class_platform}{Platform}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_game_object}{GameObject}}, \textcolor{keyword}{public} \mbox{\hyperlink{class_physics_object}{PhysicsObject}}}
+\DoxyCodeLine{9 \{}
+\DoxyCodeLine{10 \textcolor{keyword}{public}:}
+\DoxyCodeLine{11     \mbox{\hyperlink{class_platform}{Platform}}(\mbox{\hyperlink{class_game}{Game}}* gameInstance, SceneManager* scnmngr, std::string name);}
+\DoxyCodeLine{12     \mbox{\hyperlink{class_platform}{\string~Platform}}();}
+\DoxyCodeLine{13 }
+\DoxyCodeLine{14     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_platform_a14d74d3abcd333b585c4eecf0db66ce4}{ObserverUpdate}}(Keycode, EventType) \textcolor{keyword}{override};}
+\DoxyCodeLine{15 }
+\DoxyCodeLine{16     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_platform_a1c4fbb1ad1c99246c90c0ecf437ed3d0}{Update}}() \textcolor{keyword}{override};}
+\DoxyCodeLine{17 \};}
+
+\end{DoxyCode}

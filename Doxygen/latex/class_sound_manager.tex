@@ -1,0 +1,110 @@
+\hypertarget{class_sound_manager}{}\doxysection{Sound\+Manager Class Reference}
+\label{class_sound_manager}\index{SoundManager@{SoundManager}}
+
+
+Sound Manager using a singleton design pattern that can load .wav sounds and play them back. Uses SDL\+\_\+mixer.\+h library for this.  
+
+
+
+
+{\ttfamily \#include $<$Sound\+Manager.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{class_sound_manager_acf34a5ccff062eb30f4930b2426d23de}{load}} (std\+::string file\+Name, std\+::string id, sound\+\_\+type type)
+\begin{DoxyCompactList}\small\item\em Load a .wav (sound or music) and add it to its respective map. File should be placed in project folder. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_sound_manager_ab7fa2f8dd23606003a1d88245031ebef}{play\+Sound}} (std\+::string id, int loop, int volume)
+\begin{DoxyCompactList}\small\item\em Plays a sound from the map. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_sound_manager_a92f88d8f6ab6c257ab8decc5fc87365b}{play\+Music}} (std\+::string id, int loop, int volume)
+\begin{DoxyCompactList}\small\item\em Plays a music track from the map. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_sound_manager}{Sound\+Manager}} $\ast$ \mbox{\hyperlink{class_sound_manager_afb88058c46a2036b74f2775fc0cc2731}{Instance}} ()
+\begin{DoxyCompactList}\small\item\em Static instance call acts as the singleton. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Sound Manager using a singleton design pattern that can load .wav sounds and play them back. Uses SDL\+\_\+mixer.\+h library for this. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_sound_manager_afb88058c46a2036b74f2775fc0cc2731}\label{class_sound_manager_afb88058c46a2036b74f2775fc0cc2731}} 
+\index{SoundManager@{SoundManager}!Instance@{Instance}}
+\index{Instance@{Instance}!SoundManager@{SoundManager}}
+\doxysubsubsection{\texorpdfstring{Instance()}{Instance()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{class_sound_manager}{Sound\+Manager}} $\ast$ Sound\+Manager\+::\+Instance (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Static instance call acts as the singleton. 
+
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_sound_manager_acf34a5ccff062eb30f4930b2426d23de}\label{class_sound_manager_acf34a5ccff062eb30f4930b2426d23de}} 
+\index{SoundManager@{SoundManager}!load@{load}}
+\index{load@{load}!SoundManager@{SoundManager}}
+\doxysubsubsection{\texorpdfstring{load()}{load()}}
+{\footnotesize\ttfamily bool Sound\+Manager\+::load (\begin{DoxyParamCaption}\item[{std\+::string}]{file\+Name,  }\item[{std\+::string}]{id,  }\item[{sound\+\_\+type}]{type }\end{DoxyParamCaption})}
+
+
+
+Load a .wav (sound or music) and add it to its respective map. File should be placed in project folder. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em file\+Name} & Name of the .wav file.\\
+\hline
+{\em id} & String used to to grab the track from the map.\\
+\hline
+{\em type} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_sound_manager_a92f88d8f6ab6c257ab8decc5fc87365b}\label{class_sound_manager_a92f88d8f6ab6c257ab8decc5fc87365b}} 
+\index{SoundManager@{SoundManager}!playMusic@{playMusic}}
+\index{playMusic@{playMusic}!SoundManager@{SoundManager}}
+\doxysubsubsection{\texorpdfstring{playMusic()}{playMusic()}}
+{\footnotesize\ttfamily void Sound\+Manager\+::play\+Music (\begin{DoxyParamCaption}\item[{std\+::string}]{id,  }\item[{int}]{loop,  }\item[{int}]{volume }\end{DoxyParamCaption})}
+
+
+
+Plays a music track from the map. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & \\
+\hline
+{\em loop} & -\/1 for infinite loop otherwise its number of loops.\\
+\hline
+{\em volume} & Volume between 0 and 128.\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_sound_manager_ab7fa2f8dd23606003a1d88245031ebef}\label{class_sound_manager_ab7fa2f8dd23606003a1d88245031ebef}} 
+\index{SoundManager@{SoundManager}!playSound@{playSound}}
+\index{playSound@{playSound}!SoundManager@{SoundManager}}
+\doxysubsubsection{\texorpdfstring{playSound()}{playSound()}}
+{\footnotesize\ttfamily void Sound\+Manager\+::play\+Sound (\begin{DoxyParamCaption}\item[{std\+::string}]{id,  }\item[{int}]{loop,  }\item[{int}]{volume }\end{DoxyParamCaption})}
+
+
+
+Plays a sound from the map. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & \\
+\hline
+{\em loop} & -\/1 for infinite loop otherwise its number of loops.\\
+\hline
+{\em volume} & Volume between 0 and 128.\\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Orgre\+Template\+V2/Sound\+Manager.\+h\item 
+Orgre\+Template\+V2/Sound\+Manager.\+cpp\end{DoxyCompactItemize}

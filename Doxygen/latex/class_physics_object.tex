@@ -1,0 +1,131 @@
+\hypertarget{class_physics_object}{}\doxysection{Physics\+Object Class Reference}
+\label{class_physics_object}\index{PhysicsObject@{PhysicsObject}}
+
+
+Object type for physics calculation.  
+
+
+
+
+{\ttfamily \#include $<$Physics\+Object.\+h$>$}
+
+Inheritance diagram for Physics\+Object\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_physics_object}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_physics_object_a96fc26832ab12cb9edcf2c922e7c468a}\label{class_physics_object_a96fc26832ab12cb9edcf2c922e7c468a}} 
+enum \mbox{\hyperlink{class_physics_object_a96fc26832ab12cb9edcf2c922e7c468a}{Rigidbody\+Type}} \{ {\bfseries k\+Dynamic}
+, {\bfseries k\+Kinematic}
+, {\bfseries k\+Static}
+ \}
+\begin{DoxyCompactList}\small\item\em enum for the type of Rigidbody. Dynamic is affected by gravity, Kinematic has to be moved manually, Static cannot be moved \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_physics_object_a7c1ee98c857c7aa6a4f051ec53a243c7}\label{class_physics_object_a7c1ee98c857c7aa6a4f051ec53a243c7}} 
+{\bfseries Physics\+Object} (Ogre\+::\+Scene\+Node $\ast$node)
+\item 
+\mbox{\Hypertarget{class_physics_object_ad5e0d6cc0f7c289c67cff8596fb26969}\label{class_physics_object_ad5e0d6cc0f7c289c67cff8596fb26969}} 
+Ogre\+::\+Vector3 {\bfseries Get\+Velocity} () const
+\begin{DoxyCompactList}\small\item\em Accessor for velocity. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_physics_object_a54c673301bb4e8e25d18bedae2775b00}\label{class_physics_object_a54c673301bb4e8e25d18bedae2775b00}} 
+void {\bfseries Set\+Velocity} (const Ogre\+::\+Vector3 \&value)
+\begin{DoxyCompactList}\small\item\em Mutator for velocity, using Vector3. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_physics_object_a96ab307ba413e64ba1ced70822fd837d}\label{class_physics_object_a96ab307ba413e64ba1ced70822fd837d}} 
+void {\bfseries Set\+Velocity} (const float \&x, const float \&y, const float \&z)
+\begin{DoxyCompactList}\small\item\em Mutator for velocity, using 3 float values. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_physics_object_a4d11ddfb693805d31a46b826b09ec121}\label{class_physics_object_a4d11ddfb693805d31a46b826b09ec121}} 
+bool {\bfseries Is\+Static} () const
+\begin{DoxyCompactList}\small\item\em Check if \mbox{\hyperlink{class_physics_object}{Physics\+Object}} is of type Static. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_physics_object_ad27863fa2a5665a3c12d80414ea440df}\label{class_physics_object_ad27863fa2a5665a3c12d80414ea440df}} 
+void {\bfseries Set\+Rigidbody\+Type} (const \mbox{\hyperlink{class_physics_object_a96fc26832ab12cb9edcf2c922e7c468a}{Physics\+Object\+::\+Rigidbody\+Type}} \&value)
+\begin{DoxyCompactList}\small\item\em Mutator for rigidbody type. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_physics_object_a894699e8be4334751a0b3afe285c7a34}\label{class_physics_object_a894699e8be4334751a0b3afe285c7a34}} 
+bool {\bfseries Is\+Grounded} () const
+\begin{DoxyCompactList}\small\item\em Check if \mbox{\hyperlink{class_physics_object}{Physics\+Object}} is on the ground. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_physics_object_ae463df011335831c3d63b239c639e015}\label{class_physics_object_ae463df011335831c3d63b239c639e015}} 
+void {\bfseries Set\+Grounded} (const bool \&value)
+\begin{DoxyCompactList}\small\item\em Mutator for grounded status. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{class_physics_object_ac8354a821419342c43436d6ee3f2a1ca}{Physics\+Update}} ()
+\begin{DoxyCompactList}\small\item\em Update function for physics that can be overridden. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Ogre\+::\+Vector3 \mbox{\hyperlink{class_physics_object_aaddf1ef81c3232e7e47a32bffe5bed73}{velocity\+\_\+}}
+\item 
+float \mbox{\hyperlink{class_physics_object_aefb0d78b7683be278038f708b270a1e1}{mass\+\_\+}}
+\item 
+float \mbox{\hyperlink{class_physics_object_ae05ec035e7a94ad132af9574bc3aa931}{gravity\+\_\+}} = 0.\+0098f
+\item 
+\mbox{\hyperlink{class_physics_object_a96fc26832ab12cb9edcf2c922e7c468a}{Physics\+Object\+::\+Rigidbody\+Type}} \mbox{\hyperlink{class_physics_object_af9c9783fe87fe53d43479901a8ee77c2}{rb\+\_\+type\+\_\+}}
+\item 
+bool \mbox{\hyperlink{class_physics_object_a57f9b2ab8af8914d756238f9e15becc0}{is\+\_\+grounded\+\_\+}} = false
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Object type for physics calculation. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_physics_object_ac8354a821419342c43436d6ee3f2a1ca}\label{class_physics_object_ac8354a821419342c43436d6ee3f2a1ca}} 
+\index{PhysicsObject@{PhysicsObject}!PhysicsUpdate@{PhysicsUpdate}}
+\index{PhysicsUpdate@{PhysicsUpdate}!PhysicsObject@{PhysicsObject}}
+\doxysubsubsection{\texorpdfstring{PhysicsUpdate()}{PhysicsUpdate()}}
+{\footnotesize\ttfamily void Physics\+Object\+::\+Physics\+Update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Update function for physics that can be overridden. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em node} & \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_physics_object_ae05ec035e7a94ad132af9574bc3aa931}\label{class_physics_object_ae05ec035e7a94ad132af9574bc3aa931}} 
+\index{PhysicsObject@{PhysicsObject}!gravity\_@{gravity\_}}
+\index{gravity\_@{gravity\_}!PhysicsObject@{PhysicsObject}}
+\doxysubsubsection{\texorpdfstring{gravity\_}{gravity\_}}
+{\footnotesize\ttfamily float Physics\+Object\+::gravity\+\_\+ = 0.\+0098f\hspace{0.3cm}{\ttfamily [protected]}}
+
+Gravity value. \mbox{\Hypertarget{class_physics_object_a57f9b2ab8af8914d756238f9e15becc0}\label{class_physics_object_a57f9b2ab8af8914d756238f9e15becc0}} 
+\index{PhysicsObject@{PhysicsObject}!is\_grounded\_@{is\_grounded\_}}
+\index{is\_grounded\_@{is\_grounded\_}!PhysicsObject@{PhysicsObject}}
+\doxysubsubsection{\texorpdfstring{is\_grounded\_}{is\_grounded\_}}
+{\footnotesize\ttfamily bool Physics\+Object\+::is\+\_\+grounded\+\_\+ = false\hspace{0.3cm}{\ttfamily [protected]}}
+
+Flag to check if object is grounded, to stop gravity moving it down. \mbox{\Hypertarget{class_physics_object_aefb0d78b7683be278038f708b270a1e1}\label{class_physics_object_aefb0d78b7683be278038f708b270a1e1}} 
+\index{PhysicsObject@{PhysicsObject}!mass\_@{mass\_}}
+\index{mass\_@{mass\_}!PhysicsObject@{PhysicsObject}}
+\doxysubsubsection{\texorpdfstring{mass\_}{mass\_}}
+{\footnotesize\ttfamily float Physics\+Object\+::mass\+\_\+\hspace{0.3cm}{\ttfamily [protected]}}
+
+Mass value. \mbox{\Hypertarget{class_physics_object_af9c9783fe87fe53d43479901a8ee77c2}\label{class_physics_object_af9c9783fe87fe53d43479901a8ee77c2}} 
+\index{PhysicsObject@{PhysicsObject}!rb\_type\_@{rb\_type\_}}
+\index{rb\_type\_@{rb\_type\_}!PhysicsObject@{PhysicsObject}}
+\doxysubsubsection{\texorpdfstring{rb\_type\_}{rb\_type\_}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_physics_object_a96fc26832ab12cb9edcf2c922e7c468a}{Physics\+Object\+::\+Rigidbody\+Type}} Physics\+Object\+::rb\+\_\+type\+\_\+\hspace{0.3cm}{\ttfamily [protected]}}
+
+Rigidbody type. \mbox{\Hypertarget{class_physics_object_aaddf1ef81c3232e7e47a32bffe5bed73}\label{class_physics_object_aaddf1ef81c3232e7e47a32bffe5bed73}} 
+\index{PhysicsObject@{PhysicsObject}!velocity\_@{velocity\_}}
+\index{velocity\_@{velocity\_}!PhysicsObject@{PhysicsObject}}
+\doxysubsubsection{\texorpdfstring{velocity\_}{velocity\_}}
+{\footnotesize\ttfamily Ogre\+::\+Vector3 Physics\+Object\+::velocity\+\_\+\hspace{0.3cm}{\ttfamily [protected]}}
+
+Velocity value. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Orgre\+Template\+V2/Physics\+Object.\+h\item 
+Orgre\+Template\+V2/Physics\+Object.\+cpp\end{DoxyCompactItemize}

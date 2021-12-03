@@ -1,0 +1,83 @@
+\hypertarget{class_collision_manager}{}\doxysection{Collision\+Manager Class Reference}
+\label{class_collision_manager}\index{CollisionManager@{CollisionManager}}
+
+
+Collision Manager using static method to check where objects collide.  
+
+
+
+
+{\ttfamily \#include $<$Collision\+Manager.\+h$>$}
+
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_collision_manager_a512430a5bcf138d2424281538e64ba31}\label{class_collision_manager_a512430a5bcf138d2424281538e64ba31}} 
+enum \mbox{\hyperlink{class_collision_manager_a512430a5bcf138d2424281538e64ba31}{Collision\+Type}} \{ \newline
+{\bfseries k\+Null}
+, {\bfseries k\+Top}
+, {\bfseries k\+Bottom}
+, {\bfseries k\+Left}
+, \newline
+{\bfseries k\+Right}
+ \}
+\begin{DoxyCompactList}\small\item\em enum for where object1 collides with the other one \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_collision_manager_a512430a5bcf138d2424281538e64ba31}{Collision\+Type}} \mbox{\hyperlink{class_collision_manager_a694474049ef26fe79cb8fc5d2ffcd108}{AABBCheck}} (\mbox{\hyperlink{class_game_object}{Game\+Object}} $\ast$object1, \mbox{\hyperlink{class_game_object}{Game\+Object}} $\ast$object2)
+\begin{DoxyCompactList}\small\item\em Checks collision between 2 Game\+Objects using their World\+AABB \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{class_collision_manager_a512430a5bcf138d2424281538e64ba31}{Collision\+Type}} \mbox{\hyperlink{class_collision_manager_a6ef5f24375682bd2a7aa10deba082a06}{Camera\+Bound\+Check}} (\mbox{\hyperlink{class_game_object}{Game\+Object}} $\ast$object1, Camera $\ast$cam)
+\begin{DoxyCompactList}\small\item\em Checks collision between a \mbox{\hyperlink{class_game_object}{Game\+Object}} using its World\+AABB and camera \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Collision Manager using static method to check where objects collide. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_collision_manager_a694474049ef26fe79cb8fc5d2ffcd108}\label{class_collision_manager_a694474049ef26fe79cb8fc5d2ffcd108}} 
+\index{CollisionManager@{CollisionManager}!AABBCheck@{AABBCheck}}
+\index{AABBCheck@{AABBCheck}!CollisionManager@{CollisionManager}}
+\doxysubsubsection{\texorpdfstring{AABBCheck()}{AABBCheck()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_collision_manager_a512430a5bcf138d2424281538e64ba31}{Collision\+Manager\+::\+Collision\+Type}} Collision\+Manager\+::\+AABBCheck (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_game_object}{Game\+Object}} $\ast$}]{object1,  }\item[{\mbox{\hyperlink{class_game_object}{Game\+Object}} $\ast$}]{object2 }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Checks collision between 2 Game\+Objects using their World\+AABB 
+
+
+\begin{DoxyParams}{Parameters}
+{\em object1} & \\
+\hline
+{\em object2} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns where object1 collides with the other one
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_collision_manager_a6ef5f24375682bd2a7aa10deba082a06}\label{class_collision_manager_a6ef5f24375682bd2a7aa10deba082a06}} 
+\index{CollisionManager@{CollisionManager}!CameraBoundCheck@{CameraBoundCheck}}
+\index{CameraBoundCheck@{CameraBoundCheck}!CollisionManager@{CollisionManager}}
+\doxysubsubsection{\texorpdfstring{CameraBoundCheck()}{CameraBoundCheck()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_collision_manager_a512430a5bcf138d2424281538e64ba31}{Collision\+Manager\+::\+Collision\+Type}} Collision\+Manager\+::\+Camera\+Bound\+Check (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_game_object}{Game\+Object}} $\ast$}]{object1,  }\item[{Camera $\ast$}]{cam }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Checks collision between a \mbox{\hyperlink{class_game_object}{Game\+Object}} using its World\+AABB and camera 
+
+
+\begin{DoxyParams}{Parameters}
+{\em object1} & \\
+\hline
+{\em object2} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns where object1 collides with the other one
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Orgre\+Template\+V2/Collision\+Manager.\+h\item 
+Orgre\+Template\+V2/Collision\+Manager.\+cpp\end{DoxyCompactItemize}

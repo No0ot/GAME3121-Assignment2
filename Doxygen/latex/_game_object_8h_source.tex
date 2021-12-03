@@ -1,0 +1,28 @@
+\hypertarget{_game_object_8h_source}{}\doxysection{Game\+Object.\+h}
+\label{_game_object_8h_source}\index{OrgreTemplateV2/GameObject.h@{OrgreTemplateV2/GameObject.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#include "{}InputObserver.h"{}}}
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include "{}Mesh.h"{}}}
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \textcolor{keyword}{class }\mbox{\hyperlink{class_game}{Game}};}
+\DoxyCodeLine{10 \textcolor{keyword}{class }\mbox{\hyperlink{class_game_object}{GameObject}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_input_observer}{InputObserver}}}
+\DoxyCodeLine{11 \{}
+\DoxyCodeLine{12 \textcolor{keyword}{public}:}
+\DoxyCodeLine{13     \mbox{\hyperlink{class_game_object}{GameObject}}(\mbox{\hyperlink{class_game}{Game}}* gameInstance, SceneManager* scnmngr, std::string name);}
+\DoxyCodeLine{14     \mbox{\hyperlink{class_game_object}{\string~GameObject}}();}
+\DoxyCodeLine{15 }
+\DoxyCodeLine{19     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_game_object_a7f5c1336131d246a1e4ec9047996cab8}{Update}}() = 0;}
+\DoxyCodeLine{24     Ogre::SceneNode* \mbox{\hyperlink{class_game_object_aa71e20601918e75d34eba11a5fbf6545}{GetNode}}();}
+\DoxyCodeLine{29     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_game_object_a0dd6aa0d7becc86f5e0bac90e5190948}{SetNode}}(Ogre::SceneNode* newnode);}
+\DoxyCodeLine{35     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_game_object_ab0556c79e2fead71003c64b39a9759c2}{ObserverUpdate}}(Keycode, EventType) = 0;}
+\DoxyCodeLine{36 }
+\DoxyCodeLine{37 \textcolor{keyword}{protected}:}
+\DoxyCodeLine{38     \mbox{\hyperlink{class_game}{Game}}* \mbox{\hyperlink{class_game_object_ad6648935110cb34902130838a4ea6dbe}{mGameReference}}; }
+\DoxyCodeLine{39     Ogre::SceneNode* \mbox{\hyperlink{class_game_object_a069c2ab5bcd93e12fe7f3a73e1f095aa}{node}}; }
+\DoxyCodeLine{40     Ogre::ManualObject* \mbox{\hyperlink{class_game_object_a0de18c7bdc2d5b875bde19ca05b5c663}{mesh}}; }
+\DoxyCodeLine{41 \};}
+
+\end{DoxyCode}
