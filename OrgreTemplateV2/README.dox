@@ -1,14 +1,14 @@
 /**
 
 
-@mainpage GAME3121 - Assignment 1
+@mainpage GAME3121 - Assignment 2
 
 
-@author Chris Tulip
+@author Chris Tulip, Kyle Hunter(Trung Le)
 
 
-Use A,D to move the paddle.
-G to start ball movement.
+Use A,D to move the player. Jump as high as you can before losing 3 lives!
+
 
 
 */
