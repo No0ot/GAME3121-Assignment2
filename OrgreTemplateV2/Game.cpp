@@ -9,7 +9,7 @@ class PhysicsFrameListener : public Ogre::FrameListener
 {
 private:
     Game* gameInstance;
-
+    Ogre::Real updateUITime = 0;
 public:
     PhysicsFrameListener( Game* gameinstanceref )
     {
@@ -30,7 +30,12 @@ public:
 
     bool frameRenderingQueued(const Ogre::FrameEvent& evt)
     {
-        gameInstance->UpdateUI(evt);
+        updateUITime += evt.timeSinceLastFrame;
+        if (updateUITime >= 0.1)
+        {
+            gameInstance->UpdateUI(evt);
+            updateUITime = 0;
+        }
         return true;
     }
 };
