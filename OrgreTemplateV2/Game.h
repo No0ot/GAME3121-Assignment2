@@ -30,6 +30,7 @@ private:
     std::vector<Platform*> platformObjects;
     float platform_max_y_;
     Player* playerObject;
+    Ogre::SceneNode* bkg_node_;
     Ogre::SceneNode* ballNode;
     TrayManager* mTrayMgr;
     TrayListener myTrayListener;
@@ -106,6 +107,6 @@ public:
     bool keepRunning();
     void GameLoopUpdate();
 
-    void CheckGameObjectCollision();
+    void GameLogicCheck();
 };
 

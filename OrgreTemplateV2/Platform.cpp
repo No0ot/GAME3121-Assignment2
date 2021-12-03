@@ -23,5 +23,5 @@ void Platform::ObserverUpdate(Keycode keycode, EventType eventtype)
 
 void Platform::Update()
 {
-	PhysicsUpdate();
+	//PhysicsUpdate();
 }

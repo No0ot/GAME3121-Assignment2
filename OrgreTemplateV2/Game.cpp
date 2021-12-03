@@ -1,6 +1,7 @@
 /*! Game class used to build the application and set-up the game world */
 #include "Game.h"
 #include "SoundManager.h"
+#include "CollisionManager.h"
 
 /// Custom FrameListener. 
 /// Keeps references to physics objects to call their update functions. 
@@ -92,6 +93,7 @@ void Game::setup()
         temp->GetNode()->translate(Ogre::Math::RangeRandom(-15.0f, 15.0f), platform_max_y_, 0);
         platform_max_y_ += Ogre::Math::RangeRandom(5.0f, 8.5f);
     }
+    platformObjects[0]->GetNode()->setPosition(playerObject->GetNode()->getPosition().x, playerObject->GetNode()->getPosition().y - 10, platformObjects[0]->GetNode()->getPosition().z);
     //Ogre::Vector4 temp_vect = Ogre::Vector4(1,1,0,1) * (cam_->getProjectionMatrix() * cam_->getViewMatrix()).inverse();
 
     CreateFrameListener();
@@ -169,7 +171,8 @@ void Game::CreateBackground()
     //Now we will create a new Entity using this mesh.
     //We want to tell our SceneManager not to cast shadows from our ground Entity. It would just be a waste. Don't get confused, this means the ground won't cast a shadow, it doesn't mean we can't cast shadows on to the ground.
     Entity* groundEntity = scnMgr->createEntity("ground");
-    scnMgr->getRootSceneNode()->createChildSceneNode()->attachObject(groundEntity);
+    bkg_node_ = scnMgr->getRootSceneNode()->createChildSceneNode();
+    bkg_node_->attachObject(groundEntity);
     groundEntity->setCastShadows(false);
 
     //And finally we need to give our ground a material.
@@ -278,39 +281,33 @@ void Game::GameLoopUpdate()
         objects->Update();
     }
 
-    CheckGameObjectCollision();
+    GameLogicCheck();
 }
 
-void Game::CheckGameObjectCollision()
+void Game::GameLogicCheck()
 {
     /*std::cout << ">>> playerObject->GetNode()->_getWorldAABB().getCenter().x ";
     std::cout << playerObject->GetNode()->_getWorldAABB().getCenter().x << std::endl;*/
     playerObject->SetGrounded(false);
     for (int i = 0; i < platformObjects.size(); i++)
     {
-        if (playerObject->GetNode()->_getWorldAABB().intersects(platformObjects[i]->GetNode()->_getWorldAABB()))
+        if (CollisionManager::AABBCheck(playerObject, platformObjects[i]) == CollisionManager::CollisionType::kBottom)
         {
-            float dist = playerObject->GetNode()->_getWorldAABB().getCorner(Ogre::AxisAlignedBox::CornerEnum::FAR_LEFT_BOTTOM).y - 
-                platformObjects[i]->GetNode()->_getWorldAABB().getCorner(Ogre::AxisAlignedBox::CornerEnum::FAR_LEFT_TOP).y;
-            //std::cout << dist << std::endl;
-            if (dist < 1.65f && dist > -1.65f)
+            //std::cout << ">>> Player on platform" << std::endl;
+            //playerObject->SetGrounded(true);
+
+            // RESOLVE CLIPPING
+            /*std::cout << "player: ";
+            std::cout << playerObject->GetNode()->getPosition().y - playerObject->GetNode()->_getWorldAABB().getHalfSize().y << std::endl;
+            std::cout << "platform: ";
+            std::cout << platformObjects[i]->GetNode()->_getWorldAABB().getCorner(Ogre::AxisAlignedBox::CornerEnum::FAR_LEFT_TOP).y << std::endl;
+            playerObject->GetNode()->setPosition(playerObject->GetNode()->getPosition().x,
+                platformObjects[i]->GetNode()->_getWorldAABB().getCorner(Ogre::AxisAlignedBox::CornerEnum::FAR_LEFT_TOP).y + playerObject->GetNode()->_getWorldAABB().getHalfSize().y,
+                playerObject->GetNode()->getPosition().z);*/
+            if (playerObject->GetVelocity().y <= 0)
             {
-                //std::cout << ">>> Player on platform" << std::endl;
-                //playerObject->SetGrounded(true);
-                
-                // RESOLVE CLIPPING
-                /*std::cout << "player: ";
-                std::cout << playerObject->GetNode()->getPosition().y - playerObject->GetNode()->_getWorldAABB().getHalfSize().y << std::endl;
-                std::cout << "platform: ";
-                std::cout << platformObjects[i]->GetNode()->_getWorldAABB().getCorner(Ogre::AxisAlignedBox::CornerEnum::FAR_LEFT_TOP).y << std::endl;
-                playerObject->GetNode()->setPosition(playerObject->GetNode()->getPosition().x,
-                    platformObjects[i]->GetNode()->_getWorldAABB().getCorner(Ogre::AxisAlignedBox::CornerEnum::FAR_LEFT_TOP).y + playerObject->GetNode()->_getWorldAABB().getHalfSize().y,
-                    playerObject->GetNode()->getPosition().z);*/
-                if (playerObject->GetVelocity().y <= 0)
-                {
-                    playerObject->DoJump();
-                    break;
-                }
+                playerObject->DoJump();
+                break;
             }
         }
     }
@@ -319,23 +316,21 @@ void Game::CheckGameObjectCollision()
     if (playerObject->GetNode()->getPosition().y > cam_node_->getPosition().y)
     {
         cam_node_->setPosition(cam_node_->getPosition().x, playerObject->GetNode()->getPosition().y, cam_node_->getPosition().z);
+        bkg_node_->setPosition(bkg_node_->getPosition().x, playerObject->GetNode()->getPosition().y, bkg_node_->getPosition().z);
     }
     
-    Ogre::Vector3 player_screen_pos = cam_->getProjectionMatrix() * cam_->getViewMatrix() *
-        playerObject->GetNode()->_getWorldAABB().getCenter();
-        //playerObject->GetNode()->convertLocalToWorldPosition(playerObject->GetNode()->getPosition());
-    //std::cout << player_screen_pos << std::endl;
-    if (player_screen_pos.y <= -1) //DEATH
+    if (CollisionManager::CameraBoundCheck(playerObject, cam_) == CollisionManager::CollisionType::kBottom) //DEATH
     {
         //std::cout << ">>> Player out of screen" << std::endl;
-        playerObject->SetGrounded(true);
+        //playerObject->SetGrounded(true);
+        playerObject->GetNode()->setPosition(0, cam_node_->getPosition().y, 0); //reposition to center of screen
+        playerObject->SetVelocity(0,0,0);
     }
 
     // CHECK PLATFORM - SCREEN
     for (int i = 0; i < platformObjects.size(); i++)
     {
-        if ((cam_->getProjectionMatrix() * cam_->getViewMatrix() * 
-            platformObjects[i]->GetNode()->_getWorldAABB().getCenter()).y < -1.1f)
+        if (CollisionManager::CameraBoundCheck(platformObjects[i], cam_) == CollisionManager::CollisionType::kBottom) //reposition
         {
             platformObjects[i]->GetNode()->translate(Ogre::Math::RangeRandom(-15.0f, 15.0f), platform_max_y_, 0);
             platform_max_y_ += Ogre::Math::RangeRandom(5.0f, 8.5f);
