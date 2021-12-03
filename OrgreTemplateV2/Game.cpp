@@ -72,22 +72,26 @@ void Game::setup()
     RTShader::ShaderGenerator* shadergen = RTShader::ShaderGenerator::getSingletonPtr();
     shadergen->addSceneManager(scnMgr);
 
+    CreateScene();
+    CreateCamera();
+    CreateFrameListener();
+
     playerObject = new Player(this, this->scnMgr, "Player");
     gameObjects.push_back(playerObject);
 
-    for (int i = 0; i < 2; i++)
+    platform_max_y_ = 0;
+    for (int i = 0; i < 8; i++)
     {
         Platform* temp = new Platform(this, this->scnMgr, "Platform_" + i);
         platformObjects.push_back(temp);
         gameObjects.push_back(temp);
+        temp->GetNode()->translate(Ogre::Math::RangeRandom(-10.0f, 10.0f), platform_max_y_, 0);
+        platform_max_y_ += Ogre::Math::RangeRandom(5.0f, 9.0f);
+        std::cout << i << std::endl;
     }
-    platformObjects[0]->GetNode()->translate(0, 0.0f, 0);
-    platformObjects[1]->GetNode()->translate(10.0f, 10.0f, 0);
-
-    CreateScene();
-    CreateCamera();
-    CreateFrameListener();
+    //Ogre::Vector4 temp_vect = Ogre::Vector4(1,1,0,1) * (cam_->getProjectionMatrix() * cam_->getViewMatrix()).inverse();
 }
+
 /// Input detection function for keydown
 /// Handles input detection for keyboard buttons pressed down
 /// Basic Controls for the game
@@ -103,6 +107,7 @@ void Game::setup()
 //{
 //   
 //}
+
 /// Create Scene Function
 /// Calls the other functions that create the main objects in the game
 ///
@@ -268,11 +273,13 @@ void Game::GameLoopUpdate()
         objects->Update();
     }
 
-    CheckPlayerCollision();
+    CheckGameObjectCollision();
 }
 
-void Game::CheckPlayerCollision()
+void Game::CheckGameObjectCollision()
 {
+    /*std::cout << ">>> playerObject->GetNode()->_getWorldAABB().getCenter().x ";
+    std::cout << playerObject->GetNode()->_getWorldAABB().getCenter().x << std::endl;*/
     playerObject->SetGrounded(false);
     for (int i = 0; i < platformObjects.size(); i++)
     {
@@ -284,7 +291,8 @@ void Game::CheckPlayerCollision()
             if (dist < 1.65f && dist > -1.65f)
             {
                 //std::cout << ">>> Player on platform" << std::endl;
-                playerObject->SetGrounded(true);
+                //playerObject->SetGrounded(true);
+                
                 // RESOLVE CLIPPING
                 /*std::cout << "player: ";
                 std::cout << playerObject->GetNode()->getPosition().y - playerObject->GetNode()->_getWorldAABB().getHalfSize().y << std::endl;
@@ -293,10 +301,13 @@ void Game::CheckPlayerCollision()
                 playerObject->GetNode()->setPosition(playerObject->GetNode()->getPosition().x,
                     platformObjects[i]->GetNode()->_getWorldAABB().getCorner(Ogre::AxisAlignedBox::CornerEnum::FAR_LEFT_TOP).y + playerObject->GetNode()->_getWorldAABB().getHalfSize().y,
                     playerObject->GetNode()->getPosition().z);*/
+                playerObject->DoJump();
                 break;
             }
         }
     }
+
+    // CHECK PLAYER - SCREEN
     Ogre::Vector3 player_screen_pos = cam_->getProjectionMatrix() * cam_->getViewMatrix() *
         playerObject->GetNode()->_getWorldAABB().getCenter();
         //playerObject->GetNode()->convertLocalToWorldPosition(playerObject->GetNode()->getPosition());
@@ -305,5 +316,15 @@ void Game::CheckPlayerCollision()
     {
         //std::cout << ">>> Player out of screen" << std::endl;
         playerObject->SetGrounded(true);
+    }
+
+    // CHECK PLATFORM - SCREEN
+    for (int i = 0; i < platformObjects.size(); i++)
+    {
+        if ((cam_->getProjectionMatrix() * cam_->getViewMatrix() * 
+            platformObjects[i]->GetNode()->_getWorldAABB().getCenter()).y < -1.1f)
+        {
+            platformObjects[i]->GetNode()->translate(Ogre::Math::RangeRandom(-10.0f, 10.0f), platform_max_y_, 0);
+        }
     }
 }

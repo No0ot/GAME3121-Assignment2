@@ -11,6 +11,8 @@ public:
 	void ObserverUpdate(Keycode, EventType) override;
 	void Update() override;
 
+	void DoJump();
+
 private:
 	bool moveDown;
 	bool moveUp;

@@ -33,12 +33,12 @@ void PhysicsObject::SetVelocity(const float& x, const float& y, const float& z)
 
 bool PhysicsObject::IsStatic() const
 {
-	return is_static_;
+	return (rb_type_ == PhysicsObject::RigidbodyType::kStatic ? true : false);
 }
 
-void PhysicsObject::SetStatic(const bool& value)
+void PhysicsObject::SetRigidbodyType(const PhysicsObject::RigidbodyType& value)
 {
-	is_static_ = value;
+	rb_type_ = (PhysicsObject::RigidbodyType)value;
 }
 
 bool PhysicsObject::IsGrounded() const
@@ -57,18 +57,21 @@ void PhysicsObject::SetGrounded(const bool& value)
 
 void PhysicsObject::PhysicsUpdate()
 {
-	if (!is_static_)
+	if (rb_type_ != kStatic)
 	{
 		node_->translate(velocity_);
-		if (!is_grounded_)
+		if (rb_type_ != kKinematic)
 		{
-			if (velocity_.y >= 0)
+			if (!is_grounded_)
 			{
-				velocity_.y -= gravity_;
-			}
-			else
-			{
-				velocity_.y -= gravity_ * 1.5f;
+				if (velocity_.y >= 0)
+				{
+					velocity_.y -= gravity_;
+				}
+				else
+				{
+					velocity_.y -= gravity_ * 1.75f;
+				}
 			}
 		}
 	}

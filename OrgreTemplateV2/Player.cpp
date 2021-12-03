@@ -39,6 +39,8 @@ Player::Player(Game* gameInstance, SceneManager* scnmngr, std::string name) : Ga
 	speed_ = 0.4f;
 	jump_force_ = 0.5f;
 	fall_multiplier_ = 1.25f;
+
+	SetRigidbodyType(PhysicsObject::RigidbodyType::kDynamic);
 }
 
 Player::~Player()
@@ -93,7 +95,7 @@ void Player::Update()
 	if (moveUp) //JUMP
 	{
 		//node->translate(Ogre::Vector3(0.0f, 1.0f, 0.0f));
-		SetVelocity(Ogre::Vector3(GetVelocity().x, jump_force_, GetVelocity().z));
+		DoJump();
 	}
 
 	if (moveLeft)
@@ -110,4 +112,10 @@ void Player::Update()
 	}
 
 	PhysicsUpdate();
+}
+
+void Player::DoJump() 
+{
+	SetVelocity(Ogre::Vector3(GetVelocity().x, jump_force_, GetVelocity().z));
+	TheSoundManager::Instance()->playSound("Jump", 0, 64);
 }

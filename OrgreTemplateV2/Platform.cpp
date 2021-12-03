@@ -9,7 +9,8 @@ Platform::Platform(Game* gameInstance, SceneManager* scnmngr, std::string name) 
 	node->setScale(7.0f, 1.0f, 1.0f);
 	node->setPosition(0, 0, 0);
 
-	SetStatic(true);
+	SetRigidbodyType(PhysicsObject::RigidbodyType::kKinematic);
+	SetVelocity(0,-0.2f,0);
 }
 
 Platform::~Platform()
@@ -22,4 +23,5 @@ void Platform::ObserverUpdate(Keycode keycode, EventType eventtype)
 
 void Platform::Update()
 {
+	PhysicsUpdate();
 }
