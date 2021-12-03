@@ -50,7 +50,7 @@ void InputManager::PopulateKeyDownList()
     mKeyDownSubjects.push_back(new InputSubject('s', EventType::KEYDOWN));
     mKeyDownSubjects.push_back(new InputSubject('a', EventType::KEYDOWN));
     mKeyDownSubjects.push_back(new InputSubject('d', EventType::KEYDOWN));
-
+    mKeyDownSubjects.push_back(new InputSubject('`', EventType::KEYDOWN));
 }
 
 void InputManager::PopulateKeyUpList()

@@ -50,13 +50,6 @@ Player::~Player()
 // handles Input events
 void Player::ObserverUpdate(Keycode keycode, EventType eventtype)
 {
-	/*if (keycode == SDLK_SPACE && eventtype == EventType::KEYDOWN)
-		std::cout << "SOMETHING HAPPENS DOWN" << std::endl;
-	if (keycode == SDLK_SPACE && eventtype == EventType::KEYUP)
-		std::cout << "SOMETHING HAPPENS UP" << std::endl;
-	if (keycode == SDLK_DOWN && eventtype == EventType::KEYDOWN)
-		std::cout << "SOMETHING DOWNWNWNWNDWN" << std::endl;*/
-
 
 	if ((keycode == 's' || keycode == SDLK_DOWN) && eventtype == EventType::KEYDOWN)
 		moveDown = true;
@@ -65,7 +58,6 @@ void Player::ObserverUpdate(Keycode keycode, EventType eventtype)
 	if ((keycode == 'w' || keycode == SDLK_UP || keycode == SDLK_SPACE) && eventtype == EventType::KEYDOWN)
 	{
 		moveUp = true;
-		TheSoundManager::Instance()->playSound("Jump", 0, 64);
 	}
 	if ((keycode == 'w' || keycode == SDLK_UP || keycode == SDLK_SPACE) && eventtype == EventType::KEYUP)
 		moveUp = false;
@@ -92,11 +84,11 @@ void Player::Update()
 	//	SetVelocity(Ogre::Vector3(GetVelocity().x, 0.0f, GetVelocity().z));
 	//}
 		
-	if (moveUp) //JUMP
-	{
-		//node->translate(Ogre::Vector3(0.0f, 1.0f, 0.0f));
-		DoJump();
-	}
+	//if (moveUp) //JUMP
+	//{
+	//	//node->translate(Ogre::Vector3(0.0f, 1.0f, 0.0f));
+	//	DoJump();
+	//}
 
 	if (moveLeft)
 	{

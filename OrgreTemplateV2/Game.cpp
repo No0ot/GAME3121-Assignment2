@@ -65,7 +65,7 @@ void Game::setup()
     InputSubject* temp = mInputManager->GetInputSubject(SDLK_ESCAPE, EventType::KEYDOWN);
 
     this->AttachToSubject(*temp);
-    temp = mInputManager->GetInputSubject(SDLK_SPACE, EventType::KEYDOWN);
+    temp = mInputManager->GetInputSubject('`', EventType::KEYDOWN);
     this->AttachToSubject(*temp);
     //sndMngr = new SoundManager();
    
@@ -95,6 +95,9 @@ void Game::setup()
     }
     platformObjects[0]->GetNode()->setPosition(playerObject->GetNode()->getPosition().x, playerObject->GetNode()->getPosition().y - 10, platformObjects[0]->GetNode()->getPosition().z);
     //Ogre::Vector4 temp_vect = Ogre::Vector4(1,1,0,1) * (cam_->getProjectionMatrix() * cam_->getViewMatrix()).inverse();
+
+    mPlayerJumps = 0;
+    mPlayerLives = 3;
 
     CreateFrameListener();
 }
@@ -200,7 +203,7 @@ void Game::CreateLights()
     // Set Light (Range, Brightness, Fade Speed, Rapid Fade Speed)
     light1->setAttenuation(10, 0.5, 0.045, 0.0);
     Entity* lightEnt = scnMgr->createEntity("LightEntity", "sphere.mesh");
-    SceneNode* lightNode = scnMgr->createSceneNode("LightNode");
+    lightNode = scnMgr->createSceneNode("LightNode");
     lightNode->attachObject(lightEnt);
     lightNode->attachObject(light1);
     lightNode->setScale(0.01f, 0.01f, 0.01f);
@@ -226,12 +229,12 @@ void Game::CreateUI()
     //Once you have your tray manager, make sure you relay input events to it.
     addInputListener(mTrayMgr);
 
-    mInfoLabel = mTrayMgr->createLabel(TL_TOP, "TInfo", "Pong Game", 300);
+    mInfoLabel = mTrayMgr->createLabel(TL_TOP, "TInfo", "Doodle Jump 2", 300);
 
     mFpsLabel = mTrayMgr->createLabel(TL_TOPRIGHT, "FPS", "FPS:", 150);
     mFps = mTrayMgr->createLabel(TL_TOPRIGHT, "fps", "60", 150);
 
-    mScoreLabel = mTrayMgr->createLabel(TL_TOPLEFT, "Score", "Score:", 150);
+    mScoreLabel = mTrayMgr->createLabel(TL_TOPLEFT, "Score", "Jumps:", 150);
     mScore = mTrayMgr->createLabel(TL_TOPLEFT, "score", scorenum, 150);
 
     mTpuLabel = mTrayMgr->createLabel(TL_TOPRIGHT, "Time/Update", "Time/Update:", 150);
@@ -247,6 +250,11 @@ void Game::CreateUI()
 /// 
 void Game::UpdateUI(const Ogre::FrameEvent& evt)
 {
+    livesnum = Ogre::StringConverter::toString(mPlayerLives);
+    mLives->setCaption(livesnum);
+    scorenum = Ogre::StringConverter::toString(mPlayerJumps);
+    mScore->setCaption(scorenum);
+
     Tpunum = Ogre::StringConverter::toString(evt.timeSinceLastFrame);
     mTpu->setCaption(Tpunum);
 
@@ -261,9 +269,12 @@ void Game::ObserverUpdate(Keycode keycode, EventType eventtype)
         getRoot()->queueEndRendering();
         _keepRunning = false;
     } 
-    if (keycode == SDLK_SPACE && eventtype == EventType::KEYDOWN)
+    if (keycode == '`' && eventtype == EventType::KEYDOWN)
     {
-        //sndMngr->PlaySound();
+        for (auto objects : gameObjects)
+        {
+            objects->GetNode()->showBoundingBox(false);
+        }
         
     }
 }
@@ -306,6 +317,7 @@ void Game::GameLogicCheck()
                 playerObject->GetNode()->getPosition().z);*/
             if (playerObject->GetVelocity().y <= 0)
             {
+                    mPlayerJumps++;
                 playerObject->DoJump();
                 break;
             }
@@ -325,6 +337,12 @@ void Game::GameLogicCheck()
         //playerObject->SetGrounded(true);
         playerObject->GetNode()->setPosition(0, cam_node_->getPosition().y, 0); //reposition to center of screen
         playerObject->SetVelocity(0,0,0);
+        mPlayerLives -= 1;
+        if (mPlayerLives == 0)
+        {
+            getRoot()->queueEndRendering();
+            _keepRunning = false;
+        }
     }
 
     // CHECK PLATFORM - SCREEN
