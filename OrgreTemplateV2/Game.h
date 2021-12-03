@@ -23,6 +23,7 @@ private:
     Root* root;
     bool _keepRunning;
 
+    SceneNode* cam_node_;
     Camera* cam_;
 
     std::vector<GameObject*> gameObjects;

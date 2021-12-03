@@ -37,7 +37,7 @@ Player::Player(Game* gameInstance, SceneManager* scnmngr, std::string name) : Ga
 	moveDown = false;
 
 	speed_ = 0.4f;
-	jump_force_ = 0.5f;
+	jump_force_ = 0.575f;
 	fall_multiplier_ = 1.25f;
 
 	SetRigidbodyType(PhysicsObject::RigidbodyType::kDynamic);

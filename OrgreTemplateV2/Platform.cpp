@@ -10,7 +10,7 @@ Platform::Platform(Game* gameInstance, SceneManager* scnmngr, std::string name) 
 	node->setPosition(0, 0, 0);
 
 	SetRigidbodyType(PhysicsObject::RigidbodyType::kKinematic);
-	SetVelocity(0,-0.2f,0);
+	//SetVelocity(0,-0.2f,0);
 }
 
 Platform::~Platform()

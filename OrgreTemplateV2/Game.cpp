@@ -79,22 +79,22 @@ void Game::setup()
 
     CreateScene();
     CreateCamera();
-    CreateFrameListener();
 
     playerObject = new Player(this, this->scnMgr, "Player");
     gameObjects.push_back(playerObject);
 
     platform_max_y_ = 0;
-    for (int i = 0; i < 8; i++)
+    for (int i = 0; i < 30; i++)
     {
-        Platform* temp = new Platform(this, this->scnMgr, "Platform_" + i);
+        Platform* temp = new Platform(this, this->scnMgr, "Platform_" + Ogre::StringConverter::toString(i));
         platformObjects.push_back(temp);
         gameObjects.push_back(temp);
-        temp->GetNode()->translate(Ogre::Math::RangeRandom(-10.0f, 10.0f), platform_max_y_, 0);
-        platform_max_y_ += Ogre::Math::RangeRandom(5.0f, 9.0f);
-        std::cout << i << std::endl;
+        temp->GetNode()->translate(Ogre::Math::RangeRandom(-15.0f, 15.0f), platform_max_y_, 0);
+        platform_max_y_ += Ogre::Math::RangeRandom(5.0f, 8.5f);
     }
     //Ogre::Vector4 temp_vect = Ogre::Vector4(1,1,0,1) * (cam_->getProjectionMatrix() * cam_->getViewMatrix()).inverse();
+
+    CreateFrameListener();
 }
 
 /// Input detection function for keydown
@@ -131,12 +131,12 @@ void Game::CreateScene()
 ///
 void Game::CreateCamera()
 {
-    SceneNode* camNode = scnMgr->getRootSceneNode()->createChildSceneNode();
+    cam_node_ = scnMgr->getRootSceneNode()->createChildSceneNode();
     cam_ = scnMgr->createCamera("myCam");
     cam_->setNearClipDistance(5);
     cam_->setAutoAspectRatio(true);
-    camNode->attachObject(cam_);
-    camNode->setPosition(0, 0, 50);
+    cam_node_->attachObject(cam_);
+    cam_node_->setPosition(0, 0, 50);
 
     getRenderWindow()->addViewport(cam_);
 }
@@ -146,8 +146,8 @@ void Game::CreateCamera()
 ///
 void Game::CreateFrameListener()
 {
-    Ogre::FrameListener* FrameListener = new PhysicsFrameListener(this);
-    root->addFrameListener(FrameListener);
+    Ogre::FrameListener* frameListener = new PhysicsFrameListener(this);
+    root->addFrameListener(frameListener);
 }
 
 /// Creates the Background Plane
@@ -306,13 +306,21 @@ void Game::CheckGameObjectCollision()
                 playerObject->GetNode()->setPosition(playerObject->GetNode()->getPosition().x,
                     platformObjects[i]->GetNode()->_getWorldAABB().getCorner(Ogre::AxisAlignedBox::CornerEnum::FAR_LEFT_TOP).y + playerObject->GetNode()->_getWorldAABB().getHalfSize().y,
                     playerObject->GetNode()->getPosition().z);*/
-                playerObject->DoJump();
-                break;
+                if (playerObject->GetVelocity().y <= 0)
+                {
+                    playerObject->DoJump();
+                    break;
+                }
             }
         }
     }
 
     // CHECK PLAYER - SCREEN
+    if (playerObject->GetNode()->getPosition().y > cam_node_->getPosition().y)
+    {
+        cam_node_->setPosition(cam_node_->getPosition().x, playerObject->GetNode()->getPosition().y, cam_node_->getPosition().z);
+    }
+    
     Ogre::Vector3 player_screen_pos = cam_->getProjectionMatrix() * cam_->getViewMatrix() *
         playerObject->GetNode()->_getWorldAABB().getCenter();
         //playerObject->GetNode()->convertLocalToWorldPosition(playerObject->GetNode()->getPosition());
@@ -329,7 +337,8 @@ void Game::CheckGameObjectCollision()
         if ((cam_->getProjectionMatrix() * cam_->getViewMatrix() * 
             platformObjects[i]->GetNode()->_getWorldAABB().getCenter()).y < -1.1f)
         {
-            platformObjects[i]->GetNode()->translate(Ogre::Math::RangeRandom(-10.0f, 10.0f), platform_max_y_, 0);
+            platformObjects[i]->GetNode()->translate(Ogre::Math::RangeRandom(-15.0f, 15.0f), platform_max_y_, 0);
+            platform_max_y_ += Ogre::Math::RangeRandom(5.0f, 8.5f);
         }
     }
 }
